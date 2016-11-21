@@ -1,15 +1,12 @@
+#个推 APICloud iOS SDK 集成文档
+
 
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#basic-content">基础接口</a></li>
 	<li><a href="#extended-content">扩展接口</a></li>
 	<li><a href="#advanced-content">高级接口</a></li>
 </ul>
-<div id="basic-content">
 
-<div class="outline">
-	<li><a href="#a1">initialize</a></li>
-	<li><a href="#a2">registerDeviceToken</a></li>
-</div>
 
 #**概述**
 
@@ -110,6 +107,13 @@ function callback(ret,err){
     type:"occurError"
 }
 ```
+<div id="basic-content">
+
+<div class="outline" style="font-size:18px">
+	<div><a href="#a1">initialize</a></div>
+	<div><a href="#a2">registerDeviceToken</a></div>
+</div>
+
 #**initialize**<div id="a1"></div>
 
 初始化推送服务
@@ -238,18 +242,15 @@ iOS系统
 
 <div id="extended-content">
 
-<div class="outline">
-[setTag](#b1)
+<div class="outline" style="font-size:18px">
 
-[bindAlias](#b2)
+	<div><a href="#b1"> setTag </a></div>
+	<div><a href="#b2"> bindAlias </a></div>
+	<div><a href="#b3"> unBindAlias </a></div>
+	<div><a href="#b4"> stopService </a></div>
+	<div><a href="#b5"> sendFeedbackMessage </a></div>
+	<div><a href="#b6"> fetchClientId </a></div>
 
-[unBindAlias](#b3)
-
-[stopService](#b4)
-
-[sendFeedbackMessage](#b5)
-
-[fetchClientId](#b6)
 </div>
 
 #**setTag**<div id="b1"></div>
@@ -609,22 +610,14 @@ android系统 iOS系统
 </div>
 <div id="advanced-content">
 
-<div class="outline">
-
-[turnOnPush](#c1)
-
-[turnOffPush](#c2)
-
-[isPushTurnedOn](#c3)
-
-[getVersion](#c4)
-
-[setSilentTime](#c5)
-
-[sendMessage](#c6)
-
-[payloadMessage](#c7)
-
+<div class="outline" style="font-size:18px">
+	<div><a href="#c1"> turnOnPush </a></div>
+	<div><a href="#c2"> turnOffPush </a></div>
+	<div><a href="#c3"> isPushTurnedOn </a></div>
+	<div><a href="#c4"> getVersion </a></div>
+	<div><a href="#c5"> setSilentTime </a></div>
+	<div><a href="#c6"> sendMessage </a></div>
+	<div><a href="#c7"> payloadMessage </a></div>
 </div>
 
 
