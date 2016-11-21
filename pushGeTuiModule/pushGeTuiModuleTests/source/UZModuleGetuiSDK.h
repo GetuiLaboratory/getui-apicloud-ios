@@ -21,6 +21,7 @@
 @property (retain, nonatomic) NSString *appID;
 @property (retain, nonatomic) NSString *clientId;
 @property (assign, nonatomic) SdkStatus sdkStatus;
+@property (nonatomic,strong) NSString *deviceToken;
 
 @property (assign, nonatomic) int lastPayloadIndex;
 @property (retain, nonatomic) NSString *payloadId;
