@@ -2,7 +2,8 @@
 #***********************
 # .gitignore必须提交
 !.gitignore
-
+libUZEngine.a
+libGeTuiSdk-*.a
 .DS_Store
 #***********************Objective-C standard
 # Xcode
