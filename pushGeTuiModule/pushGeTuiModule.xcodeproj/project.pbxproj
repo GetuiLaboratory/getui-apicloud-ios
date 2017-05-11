@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		09C9D7B91B218005009755F8 /* UZModuleGetuiSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C9D7B71B218005009755F8 /* UZModuleGetuiSDK.m */; };
-		84DB0D231E76406100EC135C /* libGeTuiSdk-1.6.2.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DB0D221E76406100EC135C /* libGeTuiSdk-1.6.2.0.a */; };
+		8443920E1EC40B5000BF3B33 /* libGeTuiSdk-1.6.3.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8443920D1EC40B5000BF3B33 /* libGeTuiSdk-1.6.3.0.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -32,7 +32,7 @@
 		09C9D7B61B218005009755F8 /* UZModuleGetuiSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UZModuleGetuiSDK.h; sourceTree = "<group>"; };
 		09C9D7B71B218005009755F8 /* UZModuleGetuiSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UZModuleGetuiSDK.m; sourceTree = "<group>"; };
 		6FCFC8501D25F97900065A9E /* GeTuiSdk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeTuiSdk.h; sourceTree = "<group>"; };
-		84DB0D221E76406100EC135C /* libGeTuiSdk-1.6.2.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libGeTuiSdk-1.6.2.0.a"; sourceTree = "<group>"; };
+		8443920D1EC40B5000BF3B33 /* libGeTuiSdk-1.6.3.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libGeTuiSdk-1.6.3.0.a"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,7 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84DB0D231E76406100EC135C /* libGeTuiSdk-1.6.2.0.a in Frameworks */,
+				8443920E1EC40B5000BF3B33 /* libGeTuiSdk-1.6.3.0.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,7 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				6FCFC8501D25F97900065A9E /* GeTuiSdk.h */,
-				84DB0D221E76406100EC135C /* libGeTuiSdk-1.6.2.0.a */,
+				8443920D1EC40B5000BF3B33 /* libGeTuiSdk-1.6.3.0.a */,
 				09C9D7B61B218005009755F8 /* UZModuleGetuiSDK.h */,
 				09C9D7B71B218005009755F8 /* UZModuleGetuiSDK.m */,
 			);

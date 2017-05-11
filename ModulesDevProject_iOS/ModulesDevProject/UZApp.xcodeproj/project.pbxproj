@@ -45,7 +45,7 @@
 		6F0B7E011D23B6FB0018AFBA /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F0B7E001D23B6FB0018AFBA /* CoreBluetooth.framework */; };
 		6F0B7E031D23B7000018AFBA /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F0B7E021D23B7000018AFBA /* JavaScriptCore.framework */; };
 		6FCFC8581D25FA7900065A9E /* UZModuleGetuiSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FCFC8561D25FA7900065A9E /* UZModuleGetuiSDK.m */; };
-		84DB0D211E763DC700EC135C /* libGeTuiSdk-1.6.2.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DB0D201E763DC700EC135C /* libGeTuiSdk-1.6.2.0.a */; };
+		8443920C1EC40AE900BF3B33 /* libGeTuiSdk-1.6.3.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8443920B1EC40AE900BF3B33 /* libGeTuiSdk-1.6.3.0.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -97,7 +97,7 @@
 		6FCFC8531D25FA7900065A9E /* GeTuiSdk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeTuiSdk.h; sourceTree = "<group>"; };
 		6FCFC8551D25FA7900065A9E /* UZModuleGetuiSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UZModuleGetuiSDK.h; sourceTree = "<group>"; };
 		6FCFC8561D25FA7900065A9E /* UZModuleGetuiSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UZModuleGetuiSDK.m; sourceTree = "<group>"; };
-		84DB0D201E763DC700EC135C /* libGeTuiSdk-1.6.2.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libGeTuiSdk-1.6.2.0.a"; sourceTree = "<group>"; };
+		8443920B1EC40AE900BF3B33 /* libGeTuiSdk-1.6.3.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libGeTuiSdk-1.6.3.0.a"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +123,7 @@
 				527BCFC819C434100077631F /* CoreTelephony.framework in Frameworks */,
 				52F1035C19F0EA6200DFDF13 /* libbz2.dylib in Frameworks */,
 				527BCFC919C434100077631F /* AVFoundation.framework in Frameworks */,
+				8443920C1EC40AE900BF3B33 /* libGeTuiSdk-1.6.3.0.a in Frameworks */,
 				527BCFCA19C434100077631F /* MediaPlayer.framework in Frameworks */,
 				52F1035E19F0EA6700DFDF13 /* libxml2.dylib in Frameworks */,
 				527BCFCB19C434100077631F /* AddressBook.framework in Frameworks */,
@@ -133,7 +134,6 @@
 				527BCFD019C434100077631F /* MobileCoreServices.framework in Frameworks */,
 				52E21F2119C947A700A84D54 /* libUZEngine.a in Frameworks */,
 				527BCFD119C434100077631F /* MessageUI.framework in Frameworks */,
-				84DB0D211E763DC700EC135C /* libGeTuiSdk-1.6.2.0.a in Frameworks */,
 				527BCFD219C434100077631F /* Foundation.framework in Frameworks */,
 				527BCFD319C434100077631F /* CoreGraphics.framework in Frameworks */,
 				527BCFD419C434100077631F /* UIKit.framework in Frameworks */,
@@ -156,7 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				6FCFC8531D25FA7900065A9E /* GeTuiSdk.h */,
-				84DB0D201E763DC700EC135C /* libGeTuiSdk-1.6.2.0.a */,
+				8443920B1EC40AE900BF3B33 /* libGeTuiSdk-1.6.3.0.a */,
 				6FCFC8551D25FA7900065A9E /* UZModuleGetuiSDK.h */,
 				6FCFC8561D25FA7900065A9E /* UZModuleGetuiSDK.m */,
 			);

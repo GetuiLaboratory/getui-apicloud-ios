@@ -1,5 +1,7 @@
 
 #***********************
+# 提交包的归档文件
+Archive
 # .gitignore必须提交
 !.gitignore
 libUZEngine.a
