@@ -250,7 +250,7 @@ iOS系统
 	<div><a href="#b4"> stopService </a></div>
 	<div><a href="#b5"> sendFeedbackMessage </a></div>
 	<div><a href="#b6"> fetchClientId </a></div>
-
+	<div><a href="#b7"> setBadge </a></div>
 </div>
 
 #**setTag**<div id="b1"></div>
@@ -607,6 +607,68 @@ uzgetuisdk.fetchClientId(function(ret,err){
 android系统 iOS系统
 
 可提供的1.0.0及更高版本
+
+#**setBadge**<div id="b7"></div>
+
+设置角标功能,同步服务器角标计数
+
+setBadge({params},callback(ret, err))
+
+##params
+
+badge：
+
+- 类型：int
+- 默认值：无
+- 描述：0
+
+##callback(ret, err)
+
+ret：
+
+- 类型：JSON对象
+
+内部字段：
+
+```js
+{
+	result:1               //操作成功状态值
+}
+```
+
+err：
+
+- 类型：JSON对象
+
+内部字段：
+
+```js
+{
+    code:0       //错误码（详见错误码常量）
+    msg: ""      //错误描述
+}
+```
+
+##示例代码
+
+```js
+var uzgetuisdk = api.require('pushGeTui');
+var param = {badge:1};
+uzgetuisdk.setBadge(param,function(ret) {
+	api.alert({msg:"setBadge result:" + ret.result});
+});
+```
+
+##补充说明
+
+（暂无）
+
+##可用性
+
+iOS系统
+
+version > 1.1.9
+
 </div>
 <div id="advanced-content">
 

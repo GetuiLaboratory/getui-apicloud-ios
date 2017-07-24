@@ -31,6 +31,7 @@
                 <input class="featureList" type="button" value="fetchClientId" onclick="fetchClientId()"/>
                 <input class="featureList"  type="button" value="getVersion" onclick="getVersion()"/>
                 <input class="featureList"  type="button" value="isPushTurnedOn" onclick="isPushTurnedOn()"/>
+                <input class="featureList" type="button" value="setBadge" onclick="setBadge()"/>
             </div>
             <ul id="sys-info"></ul>
         </div>
@@ -102,6 +103,16 @@
                      var log='setTag:'+ret.result;
                      printfLog(log);
                      });
+    };
+    function setBadge(){
+        var param={
+            badge:3,
+        };
+        push.setBadge(param,function(ret,err){
+                    alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err));
+                    var log='setBadge:'+ret.result;
+                    printfLog(log);
+                    });
     };
     function bindAlias(){
         var param={
