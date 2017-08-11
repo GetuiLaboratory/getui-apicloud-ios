@@ -7,7 +7,7 @@
 //
 
 #import "UZModule.h"
-#import "GeTuiSdk.h"
+#import <GTSDK/GeTuiSdk.h>
 
 
 @interface UZModuleGetuiSDK : UZModule <GeTuiSdkDelegate>{

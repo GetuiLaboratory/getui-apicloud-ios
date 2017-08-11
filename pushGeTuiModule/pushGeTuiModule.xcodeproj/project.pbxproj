@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		09C9D7B91B218005009755F8 /* UZModuleGetuiSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C9D7B71B218005009755F8 /* UZModuleGetuiSDK.m */; };
-		844B5D351EF91587002B87EA /* libGeTuiSdk-1.6.4.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 844B5D341EF91587002B87EA /* libGeTuiSdk-1.6.4.0.a */; };
+		8428AB201F3D43C600E59AE3 /* UZModuleGetuiSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 8428AB1E1F3D43C600E59AE3 /* UZModuleGetuiSDK.m */; };
+		8428AB261F3D456600E59AE3 /* GTSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8428AB251F3D456600E59AE3 /* GTSDK.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,10 +29,9 @@
 		09C9D7AE1B2176E9009755F8 /* UZAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UZAppDelegate.h; sourceTree = "<group>"; };
 		09C9D7AF1B2176E9009755F8 /* UZAppUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UZAppUtils.h; sourceTree = "<group>"; };
 		09C9D7B01B2176E9009755F8 /* UZModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UZModule.h; sourceTree = "<group>"; };
-		09C9D7B61B218005009755F8 /* UZModuleGetuiSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UZModuleGetuiSDK.h; sourceTree = "<group>"; };
-		09C9D7B71B218005009755F8 /* UZModuleGetuiSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UZModuleGetuiSDK.m; sourceTree = "<group>"; };
-		6FCFC8501D25F97900065A9E /* GeTuiSdk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeTuiSdk.h; sourceTree = "<group>"; };
-		844B5D341EF91587002B87EA /* libGeTuiSdk-1.6.4.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libGeTuiSdk-1.6.4.0.a"; sourceTree = "<group>"; };
+		8428AB1D1F3D43C600E59AE3 /* UZModuleGetuiSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UZModuleGetuiSDK.h; path = ../../../ModulesDevProject_iOS/ModulesDevProject/UZApp/UZModules/pushGeTui/source/UZModuleGetuiSDK.h; sourceTree = "<group>"; };
+		8428AB1E1F3D43C600E59AE3 /* UZModuleGetuiSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UZModuleGetuiSDK.m; path = ../../../ModulesDevProject_iOS/ModulesDevProject/UZApp/UZModules/pushGeTui/source/UZModuleGetuiSDK.m; sourceTree = "<group>"; };
+		8428AB251F3D456600E59AE3 /* GTSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GTSDK.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,7 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				844B5D351EF91587002B87EA /* libGeTuiSdk-1.6.4.0.a in Frameworks */,
+				8428AB261F3D456600E59AE3 /* GTSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,10 +85,9 @@
 		09C9D7B21B218005009755F8 /* source */ = {
 			isa = PBXGroup;
 			children = (
-				6FCFC8501D25F97900065A9E /* GeTuiSdk.h */,
-				844B5D341EF91587002B87EA /* libGeTuiSdk-1.6.4.0.a */,
-				09C9D7B61B218005009755F8 /* UZModuleGetuiSDK.h */,
-				09C9D7B71B218005009755F8 /* UZModuleGetuiSDK.m */,
+				8428AB251F3D456600E59AE3 /* GTSDK.framework */,
+				8428AB1D1F3D43C600E59AE3 /* UZModuleGetuiSDK.h */,
+				8428AB1E1F3D43C600E59AE3 /* UZModuleGetuiSDK.m */,
 			);
 			name = source;
 			path = pushGeTuiModuleTests/source;
@@ -151,7 +149,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				09C9D7B91B218005009755F8 /* UZModuleGetuiSDK.m in Sources */,
+				8428AB201F3D43C600E59AE3 /* UZModuleGetuiSDK.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -235,6 +233,10 @@
 		09C9D7A51B2152EF009755F8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/pushGeTuiModuleTests/source",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -251,6 +253,10 @@
 		09C9D7A61B2152EF009755F8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/pushGeTuiModuleTests/source",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

@@ -83,7 +83,7 @@ typedef enum {
             case UnBindAlias: {
                 NSString *alias = [paramDict stringValueForKey:@"alias" defaultValue:nil];
                 if (alias != nil) {
-                    [GeTuiSdk unbindAlias:alias andSequenceNum:@"sn"];
+                    [GeTuiSdk unbindAlias:alias andSequenceNum:@"sn" andIsSelf:YES];
                     result = 1;
                 }
             } break;

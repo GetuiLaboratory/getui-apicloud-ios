@@ -79,6 +79,9 @@
           case 'sendMsgFeedback':
           log='sendMsgFeedback:'+ret.result+' messageid:'+ret.messageId;
           break;
+          case 'apns':
+          log='apns click:'+ret.result+' msg:'+ret.msg;
+          break;
       }
       if(log){
           printfLog(log);

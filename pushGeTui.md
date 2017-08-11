@@ -3,7 +3,7 @@ Title: pushGeTui
 Description: pushGeTui
 */
 
-<p style="color: #ccc; margin-bottom: 30px;">来自于：个推<a style="background-color: #95ba20; color:#fff; padding:4px 8px;border-radius:5px;margin-left:30px; margin-bottom:0px; font-size:12px;text-decoration:none;" target="_blank" href="http://apicloud.com/mod_detail?mdId=35412">立即使用</a></p>
+<p style="color: #ccc; margin-bottom: 30px;">来自于：个推<a style="background-color: #95ba20; color:#fff; padding:4px 8px;border-radius:5px;margin-left:30px; margin-bottom:0px; font-size:12px;text-decoration:none;" target="_blank" href="http://www.apicloud.com/mod_detail?mdId=37581">立即使用</a></p>
 
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#basic-content">基础接口</a></li>
@@ -53,6 +53,9 @@ APPKEY/APPID：从个推平台上的获得的应用标识
 
 8.服务端也可以指定CID进行通知消息推送，通知点击后启动APICloud应用。
 
+9.补充说明，如果用户需要点击通知并执行相应的后续动作，例如跳转至指定的界面等，则需要在个推开发者平台的推送通知界面，点击高级设置中的透传消息，配置相应的透传信息，这样用户点击通知后，应用将会收到通知附带的透传信息，在 initialize(callback(ret, err)) 中有回调，用于执行后续动作；如果采用的是个推服务端的SDK，则流程同理。
+
+
 ###关于透传消息的
 受到JS层目前机制限制，如果apicloud应用未运行，JS层是无法处理透传数据的。
 
@@ -85,7 +88,8 @@ APPKEY/APPID：从个推平台上的获得的应用标识
 type类型参数说明：
         1、cid:初始化（initialize）回调回来的cid；
         2、payload：下发payload消息；
-        3、occurError：所有发生错误时候的回调；
+        3、apns: 苹果官方 APNs 推送，即应用在后台时收到的推送消息，若通过点击该推送消息打开应用，则收到该类型的回调，可用于判断是否点击推送消息打开应用；
+        4、occurError：所有发生错误时候的回调；
 
 二、返回值result值说明：
         1、0：失败
@@ -139,12 +143,18 @@ ret：
 }
 // payload
 {
-	result:1                              //操作成功状态值
+	result:1                                //操作成功状态值
 	type:"payload"                          //payload 类型
 	taskId:"taskId"                         //taskId 值
 	messageId:"messageId"                   //messageId 值
 	payload:"payload"                       //payload 内容
 	offLine:"true"                          //判断推送时app是杀死还是启动状态
+}
+// apns
+{
+	result:1                              //操作成功状态值
+	type:"apns"                           //apns 类型
+	msg:"msg"                         	  //apns 消息体
 }
 // occurError
 {
@@ -632,7 +642,7 @@ setBadge({params}, callback(ret, err))
 
 ##params
 
-tags：
+badge：
 
 - 类型：int
 - 默认值：无

@@ -45,7 +45,7 @@
 		6F0B7E011D23B6FB0018AFBA /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F0B7E001D23B6FB0018AFBA /* CoreBluetooth.framework */; };
 		6F0B7E031D23B7000018AFBA /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F0B7E021D23B7000018AFBA /* JavaScriptCore.framework */; };
 		6FCFC8581D25FA7900065A9E /* UZModuleGetuiSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FCFC8561D25FA7900065A9E /* UZModuleGetuiSDK.m */; };
-		844B5D331EF9144A002B87EA /* libGeTuiSdk-1.6.4.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 844B5D321EF9144A002B87EA /* libGeTuiSdk-1.6.4.0.a */; };
+		8428AB191F3D417100E59AE3 /* GTSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8428AB181F3D417100E59AE3 /* GTSDK.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,10 +94,9 @@
 		6F057DE11DDD939A008CFB4C /* UZApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UZApp.entitlements; sourceTree = "<group>"; };
 		6F0B7E001D23B6FB0018AFBA /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		6F0B7E021D23B7000018AFBA /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		6FCFC8531D25FA7900065A9E /* GeTuiSdk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeTuiSdk.h; sourceTree = "<group>"; };
 		6FCFC8551D25FA7900065A9E /* UZModuleGetuiSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UZModuleGetuiSDK.h; sourceTree = "<group>"; };
 		6FCFC8561D25FA7900065A9E /* UZModuleGetuiSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UZModuleGetuiSDK.m; sourceTree = "<group>"; };
-		844B5D321EF9144A002B87EA /* libGeTuiSdk-1.6.4.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libGeTuiSdk-1.6.4.0.a"; sourceTree = "<group>"; };
+		8428AB181F3D417100E59AE3 /* GTSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GTSDK.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,10 +131,10 @@
 				527BCFCF19C434100077631F /* CFNetwork.framework in Frameworks */,
 				527BCFD019C434100077631F /* MobileCoreServices.framework in Frameworks */,
 				52E21F2119C947A700A84D54 /* libUZEngine.a in Frameworks */,
-				844B5D331EF9144A002B87EA /* libGeTuiSdk-1.6.4.0.a in Frameworks */,
 				527BCFD119C434100077631F /* MessageUI.framework in Frameworks */,
 				527BCFD219C434100077631F /* Foundation.framework in Frameworks */,
 				527BCFD319C434100077631F /* CoreGraphics.framework in Frameworks */,
+				8428AB191F3D417100E59AE3 /* GTSDK.framework in Frameworks */,
 				527BCFD419C434100077631F /* UIKit.framework in Frameworks */,
 				527BCFD519C434100077631F /* CoreData.framework in Frameworks */,
 			);
@@ -155,10 +154,9 @@
 		09C6416E1B170FEA00E73FD3 /* source */ = {
 			isa = PBXGroup;
 			children = (
-				6FCFC8531D25FA7900065A9E /* GeTuiSdk.h */,
+				8428AB181F3D417100E59AE3 /* GTSDK.framework */,
 				6FCFC8551D25FA7900065A9E /* UZModuleGetuiSDK.h */,
 				6FCFC8561D25FA7900065A9E /* UZModuleGetuiSDK.m */,
-				844B5D321EF9144A002B87EA /* libGeTuiSdk-1.6.4.0.a */,
 			);
 			path = source;
 			sourceTree = "<group>";
@@ -448,7 +446,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = 3MJY223U56;
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/UZApp/UZModules";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/UZApp/UZModules",
+					"$(PROJECT_DIR)/UZApp/UZModules/pushGeTui/source",
+				);
 				INFOPLIST_FILE = UZApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -486,7 +487,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = 3MJY223U56;
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/UZApp/UZModules";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/UZApp/UZModules",
+					"$(PROJECT_DIR)/UZApp/UZModules/pushGeTui/source",
+				);
 				INFOPLIST_FILE = UZApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
