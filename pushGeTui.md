@@ -3,7 +3,7 @@ Title: pushGeTui
 Description: pushGeTui
 */
 
-<p style="color: #ccc; margin-bottom: 30px;">来自于：个推<a style="background-color: #95ba20; color:#fff; padding:4px 8px;border-radius:5px;margin-left:30px; margin-bottom:0px; font-size:12px;text-decoration:none;" target="_blank" href="http://www.apicloud.com/mod_detail?mdId=37581">立即使用</a></p>
+<p style="color: #ccc; margin-bottom: 30px;">来自于：个推<a style="background-color: #95ba20; color:#fff; padding:4px 8px;border-radius:5px;margin-left:30px; margin-bottom:0px; font-size:12px;text-decoration:none;" target="_blank" href="//www.apicloud.com/mod_detail/pushGeTui">立即使用</a></p>
 
 <ul id="tab" class="clearfix">
 	<li class="active"><a href="#basic-content">基础接口</a></li>
@@ -101,13 +101,13 @@ function callback(ret, err){
       switch(ret.type)
       {
           case 'cid':
-          log="cid:'+ret.cid;
+          log='cid:'+ret.cid;
           break;
           case 'payload':
-          log="payload:'+ret.payload;
+          log='payload:'+ret.payload;
           break;
-          case'occurError':
-          log="occurError';
+          case 'occurError':
+          log='occurError';
           break;
       }
     }
@@ -715,6 +715,8 @@ iOS系统
 
 [payloadMessage](#c7)
 
+[voipRegistration](#c8)
+
 </div>
 
 
@@ -1121,3 +1123,63 @@ Android系统
 可提供的1.0.0及更高版本
 
 </div>
+
+#**voipRegistration**<div id="c8"></div>
+
+推送voip通知。
+
+voipRegistration(callback(ret, err))
+
+##callback(ret, err)
+
+ret：
+
+- 类型：JSON 对象
+
+内部字段：
+
+```js
+{
+	result:1                   // 操作成功状态值
+	payload:"payload msg"    	// VoIP 推送消息体
+	gmid:""						// 唯一标识
+	type:"voipPayload"			// 类型为 voipPayload
+}
+```
+
+err：
+
+- 类型：JSON 对象
+
+内部字段：
+
+```js
+{
+    code:0       //错误码（详见错误码常量）
+    msg: ""      //错误描述
+}
+```
+
+##示例代码
+
+```js
+var uzgetuisdk = api.require('pushGeTui');
+uzgetuisdk.voipRegistration(function(ret,err){
+	alert("voip callback = " + JSON.stringify(ret) + "err = " + JSON.stringify(err));
+});
+```
+
+##补充说明
+
+VoIP 功能需要添加后台运行权限，因此需要在 config.xml 添加如下字段：
+
+```
+   <preference name="backgroundMode" value="remote-notification|voip"/>
+```
+
+##可用性
+
+iOS系统
+
+可提供的2.0.2及更高版本
+

@@ -9,30 +9,26 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-typedef enum _KUZModuleErrorType {
-    kUZModuleErrorTypeNormal = 0,
-} KUZModuleErrorType;
-
 typedef enum _KUZStringType {
     kUZStringType_JSON = 0,
     kUZStringType_TEXT,
 } KUZStringType;
 
 @class UZWebView;
+@protocol UIViewControllerRotation;
 
 @interface UZModule : NSObject
 
-@property (nonatomic, readonly, weak) UZWebView *uzWebView;
-@property (nonatomic, readonly, weak) UIViewController *viewController;
-
-- (NSString *)widgetId;
+@property (nonatomic, readonly) UZWebView *uzWebView;
+@property (nonatomic, readonly) UIViewController *viewController;
+@property (nonatomic, readonly) NSString *widgetId;
 
 #pragma mark - lifeCycle
 // 重载下面方法来执行初始化和释放操作
-- (id)initWithUZWebView:(UZWebView *)webView;
+- (id)initWithUZWebView:(id)webView;
 - (void)dispose;
 
-#pragma mark - ret event
+#pragma mark - callback
 /**
  执行回调方法返回数据
  
@@ -82,7 +78,7 @@ typedef enum _KUZStringType {
  */
 - (void)evalJs:(NSString *)js;
 
-#pragma mark - utility methods
+#pragma mark - methods
 
 /**
  将包含自定义协议的路径转换成绝对路径
@@ -92,6 +88,32 @@ typedef enum _KUZStringType {
  @return 转换后的绝对路径
  */
 - (NSString *)getPathWithUZSchemeURL:(NSString *)url;
+
+//isAssetsLibrary判断是否为资源库里引用路径
+- (NSString *)getPathWithUZSchemeURL:(NSString *)url isAssetsLibrary:(BOOL*)isAssetsLibrary;
+
+/**
+ 从加密的key.xml文件中获取解密后的数据
+ 
+ @param key 加密字段
+ 
+ @return 解密后的数据，如果获取失败则返回nil
+ */
+- (NSString *)securityValueForKey:(NSString *)key;
+
+/**
+ 获取config.xml里面指定模块的配置信息
+ 
+ @return 模块配置信息
+ */
+- (NSDictionary *)getFeatureByName:(NSString *)name;
+
+/**
+ 当前应用是否支持沉浸式效果，可以在config.xml里面进行配置：<preference name="statusBarAppearance" value="true" />
+ 
+ @return 是否支持沉浸式效果
+ */
+- (BOOL)statusBarAppearance;
 
 /**
  获取指定窗口对象
@@ -116,22 +138,6 @@ typedef enum _KUZStringType {
 - (BOOL)addSubview:(UIView *)view fixedOn:(NSString *)fixedOn fixed:(BOOL)fixed;
 
 /**
- 从加密的key.xml文件中获取解密后的数据
- 
- @param key 加密字段
- 
- @return 解密后的数据，如果获取失败则返回nil
- */
-- (NSString *)securityValueForKey:(NSString *)key;
-
-/**
- 获取config.xml里面指定模块的配置信息
- 
- @return 模块配置信息
- */
-- (NSDictionary *)getFeatureByName:(NSString *)name;
-
-/**
  设置视图是否屏蔽侧滑布局滑动手势
  
  @param view 视图
@@ -145,4 +151,66 @@ typedef enum _KUZStringType {
  */
 - (void)view:(UIView *)view preventSlidBackGesture:(BOOL)prevent;
 
+/**
+ 发送自定义事件，页面可以通过api.addEventListener方法监听
+ 
+ @param name 事件名称
+ 
+ @param extra 附加信息
+ */
+- (void)sendCustomEvent:(NSString *)name extra:(id)extra;
+
+/**
+ 调试模式下显示错误信息，需在config.xml配置<preference name="debug" value="true"/>
+ 
+ @param message 错误信息
+ */
++ (void)showErrorMessage:(NSString *)message;
+
 @end
+
+@interface UZModule (Scroll)
+
+// 当前页面的scrollView，注意不要直接设置scrollView的delegate，通过setWebViewScrollDelegate:方法来设置
+@property (nonatomic, readonly) UIScrollView *scrollView;
+
+/**
+ 设置页面滚动代理，可以通过实现UIScrollViewDelegate的相关滚动方法来实现自定义上拉、下拉刷新等功能
+ 
+ @param delegate 滚动代理
+ */
+- (void)setWebViewScrollDelegate:(id<UIScrollViewDelegate>)delegate;
+
+/** 前端html页面里面可以指定要使用的下拉刷新模块，下拉刷新模块里面需要实现以下三个方法，当在html页面里面调用api.setCustomRefreshHeaderInfo()、api.refreshHeaderLoading()、api.refreshHeaderLoadDone()方法时，以下几个方法将会被调用，模块需要自行处理事件及回调。请勿主动调用这些方法。
+ */
+- (void)setCustomRefreshHeaderInfo:(NSDictionary *)param;
+- (void)refreshHeaderLoading:(NSDictionary *)param;
+- (void)refreshHeaderLoadDone:(NSDictionary *)param;
+
+@end
+
+@interface UZModule (Rotation)
+
+/**
+ 设置是否允许旋转，该设置为全局设置
+ 
+ @param autorotate 是否允许旋转，默认为YES
+ */
+- (void)setShouldAutorotate:(BOOL)autorotate;
+
+/**
+ 设置屏幕旋转方向
+ 
+ @param param 旋转方向，和api.setScreenOrientation方法参数一致，详情参考文档http://docs.apicloud.com/%E7%AB%AFAPI/api#66
+ */
+- (void)setScreenOrientation:(NSDictionary *)param;
+
+/**
+ 设置控制器旋转代理，监听控制器旋转事件
+ 
+ @param delegate 控制器旋转代理
+ */
+- (void)setViewControllerRotationDelegate:(id<UIViewControllerRotation>)delegate;
+
+@end
+

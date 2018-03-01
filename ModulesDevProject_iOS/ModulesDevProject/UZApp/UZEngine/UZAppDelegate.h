@@ -11,9 +11,7 @@
 @interface UZAppDelegate : UIResponder
 <UIApplicationDelegate>
 
-@property (readonly, strong, nonatomic) NSMutableArray *widgetControllers;
-@property (readonly, strong, nonatomic) NSMutableDictionary *appHandleDict;     //即将废弃，使用addAppHandle: 方法代替
-@property (atomic) BOOL UZIsBusy;
++ (instancetype)appDelegate;
 
 /**
  获取主widget的config.xml里面所有模块配置信息
@@ -28,6 +26,15 @@
  @return 模块配置信息
  */
 - (NSDictionary *)getFeatureByName:(NSString *)name;
+
+/**
+ 从主widget的加密的key.xml文件中获取解密后的数据
+ 
+ @param key 加密字段
+ 
+ @return 解密后的数据，如果获取失败则返回nil
+ */
+- (NSString *)securityValueForKey:(NSString *)key;
 
 //实现UIApplicationDelegate方法来接收应用消息，例如推送
 - (void)addAppHandle:(id <UIApplicationDelegate>)handle;
@@ -44,12 +51,22 @@
  */
 - (void)showMsgOnStatusBar:(NSString *)msg extra:(id)extra duration:(NSTimeInterval)duration;
 
+/**
+ 通知被点击后发送noticeclicked事件给前端
+ 
+ @param type 通知内容来源类型，0-APICloud推送，1-其他
+ 
+ @param value 附加内容
+ */
+- (void)sendNoticeClickedEventWithType:(int)type value:(id)value;
+
 //在模块配置的启动方法里面调用该方法，可以添加自定义启动画面
 - (void)addCustomLaunchView:(UIView *)view;
 
 //移除启动画面
 - (void)removeLaunchView;
+- (void)removeLaunchViewWithAnimation:(NSDictionary *)animation;
 
 @end
 
-#define theApp ((UZAppDelegate *)[[UIApplication sharedApplication] delegate])
+#define theApp [UZAppDelegate appDelegate]

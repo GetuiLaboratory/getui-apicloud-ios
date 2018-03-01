@@ -52,6 +52,10 @@
         };
         push=api.require('pushGeTui');
         push.initialize(callback);
+        // 注册 VoIP，并实现接收 VoIP 消息回调
+        push.voipRegistration(function(ret,err){
+                              alert("voip callback = " + JSON.stringify(ret) + "err = " + JSON.stringify(err));
+                              });
     }
     function callback(ret,err){
         alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err));

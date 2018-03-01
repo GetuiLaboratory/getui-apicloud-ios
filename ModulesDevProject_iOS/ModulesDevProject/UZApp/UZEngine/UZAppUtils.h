@@ -9,9 +9,13 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-#define isIPhone6Plus (CGSizeEqualToSize(CGSizeMake(1242, 2208), [[UIScreen mainScreen] currentMode].size) || CGSizeEqualToSize(CGSizeMake(1125, 2001), [[UIScreen mainScreen] currentMode].size))
+#define isIPhone6Plus [UZAppUtils deviceIsIPhone6Plus]
 
-#define isIPhone6 (CGSizeEqualToSize(CGSizeMake(750, 1334), [[UIScreen mainScreen] currentMode].size))
+#define isIPhone6PlusStandardMode [UZAppUtils deviceIsIPhone6Plus]&&(CGSizeEqualToSize(CGSizeMake(1242, 2208), [[UIScreen mainScreen] currentMode].size) )
+
+#define isIPhone6 [UZAppUtils deviceIsIPhone6]
+
+#define isIPhone6StandardMode [UZAppUtils deviceIsIPhone6]&&(CGSizeEqualToSize(CGSizeMake(750, 1334), [[UIScreen mainScreen] currentMode].size))
 
 #define isIPhone5 (CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size))
 
@@ -22,24 +26,26 @@
 @interface UZAppUtils : NSObject
 
 #pragma mark - Device info
++ (BOOL)deviceIsIPhone6Plus;
++ (BOOL)deviceIsIPhone6;
 + (BOOL)isSimulator;
 + (BOOL)popoverSupported;
-+ (NSString *)initialInterfaceOrientation;
 + (NSString *)getUUID;
 
 #pragma mark - Paths
 + (NSString *)filePathInBundle:(NSString *)fileName;
-+ (NSString *)filePathInWidget:(NSString *)fileName;
 + (NSString *)appLibraryPath;
 + (NSString *)filePathInLibrary:(NSString *)fileName;
++ (NSString *)appLibraryCachesPath;
 + (NSString *)appDocumentPath;
 + (NSString *)filePathInDocument:(NSString *)fileName;
-+ (NSString *)filePathInUZFS:(NSString *)fileName;
-+ (NSString *)getPathWithUZSchemeURL:(NSString *)urlStr;
-+ (BOOL)isFileReadOnly:(NSString *)filePath;
 
 #pragma mark - Util
 + (BOOL)isValidColor:(NSString *)colorStr;
 + (UIColor *)colorFromNSString:(NSString *)colorStr;
+
+#pragma mark - Global value
++ (void)setGlobalValue:(id)value forKey:(NSString *)key;
++ (id)globalValueForKey:(NSString *)key;
 
 @end
