@@ -67,7 +67,7 @@ APPKEY/APPID：从个推平台上的获得的应用标识
 	描述：配置个推应用信息
 ```js
 	<feature name="pushGeTui">
-	  <param name="ios_appkey" value="xCGkZR1bCp6gscLUB20Dl4" />
+	    <param name="ios_appkey" value="xCGkZR1bCp6gscLUB20Dl4" />
 		<param name="ios_appid" value="G5lfFkQZ008VoZUXydA2r2" />
 		<param name="ios_appsecret" value="RuxlC8ExWA7T4NFoJhQFd6" />
 		<param name="android_appkey" value="aiMe49ehZa7IK8sevOTiY8" />
@@ -82,7 +82,7 @@ APPKEY/APPID：从个推平台上的获得的应用标识
 		2.android_appid：应用ID，通过个推平台获得
 		3.android_appsecret：通过个推平台获得
 		4.android_groupid: 目前留空即可
-		
+
 ***接口设计说明***
 一、cid、payload、occurError都使用通过initialize传递进去的callback，所有的回调里面都定义了一个type参数，我们可以通过判断type参数来判断回调的类型.
 type类型参数说明：
@@ -162,6 +162,20 @@ ret：
 	description:"error description"         //错误描述
 	type:"occurError"                       //occurError 类型
 }
+// onNotificationMessageArrived
+{
+     type:"onNotificationMessageArrived"     //通知到达
+     taskid:"tasid"                          //taskid
+     messageid:"messageid"                   //消息id
+     title:"title"                           //消息标题
+     content:"content"                       //消息内容
+}
+// AppLinkReceive
+{
+	  result:1
+	  type:"AppLinkPayload"
+	  payload:"msg"
+}
 ```
 
 err：
@@ -194,6 +208,12 @@ uzgetuisdk.initialize(function(ret) {
         case 'occurError':
             value = 'occurError';
             break;
+        case'onNotificationMessageClicked':
+          value = 'onNotificationMessageClicked' + ret.onNotificationMessageClicked
+          break;
+        case'onNotificationMessageArrived':
+          value = 'onNotificationMessageArrived' + ret.onNotificationMessageArrived
+          break;
     }
 });
 
@@ -1182,4 +1202,6 @@ VoIP 功能需要添加后台运行权限，因此需要在 config.xml 添加如
 iOS系统
 
 可提供的2.0.2及更高版本
+
+
 
