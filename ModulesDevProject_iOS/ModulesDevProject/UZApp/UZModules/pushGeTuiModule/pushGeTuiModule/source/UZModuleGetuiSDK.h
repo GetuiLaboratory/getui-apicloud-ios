@@ -13,10 +13,8 @@
 @interface UZModuleGetuiSDK : UZModule <GeTuiSdkDelegate,PKPushRegistryDelegate>{
     NSInteger cbId;
     NSInteger voipCBId;
-    //NSInteger cbIdPayload;
 }
 
-//@property (strong, nonatomic) GeTuiSdk *getuiPusher;
 @property (retain, nonatomic) NSString *appKey;
 @property (retain, nonatomic) NSString *appSecret;
 @property (retain, nonatomic) NSString *appID;

@@ -11,21 +11,16 @@ typedef enum {
     BindAlias,
     UnBindAlias,
     RegiserDeviceToken,
-    SetBadge
+    SetBadge,
 } commonApiType;
 @implementation UZModuleGetuiSDK
 
-//@synthesize getuiPusher = _getuiPusher;
 @synthesize appKey = _appKey;
 @synthesize appSecret = _appSecret;
 @synthesize appID = _appID;
 @synthesize clientId = _clientId;
-//@synthesize sdkStatus = _sdkStatus;
 @synthesize lastPayloadIndex = _lastPaylodIndex;
 @synthesize payloadId = _payloadId;
-
-//@synthesize cbIdCid = _cbIdCid;
-//@synthesize cbIdPayload = _cbIdPayload;
 
 + (void)launch {
     //在module.json里面配置的launchClassMethod，必须为类方法，引擎会在应用启动时调用配置的方法，模块可以在其中做一些初始化操作
@@ -52,14 +47,18 @@ typedef enum {
 }
 
 #pragma mark - property
+
 - (SdkStatus)sdkStatus {
     return [GeTuiSdk status];
 }
+
 #pragma mark - private method
+
 //获取js层的回调函数cbId
 - (NSInteger)fetchCbId:(NSDictionary *)paramDict {
     return [paramDict integerValueForKey:@"cbId" defaultValue:-1];
 }
+
 //通用的api接口处理 回调bool结果
 - (void)commonApiWithBool:(commonApiType)t cbId:(NSDictionary *)paramDict {
     NSInteger cbIdTmp = [self fetchCbId:paramDict];
@@ -104,11 +103,13 @@ typedef enum {
     @catch (NSException *exception) {
         NSLog(@"%@", [exception description]);
     }
+    
     NSDictionary *ret = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:result], @"result", nil];
     if (cbIdTmp > -1) {
         [self sendResultEventWithCallbackId:cbIdTmp dataDict:ret errDict:nil doDelete:YES];
     }
 }
+
 // 模块接口定义
 - (void)initialize:(NSDictionary *)paramDict {
     NSDictionary *feature = [self getFeatureByName:@"pushGeTui"];
@@ -141,6 +142,7 @@ typedef enum {
 - (void)unBindAlias:(NSDictionary *)paramDict {
     [self commonApiWithBool:UnBindAlias cbId:paramDict];
 }
+
 - (void)fetchClientId:(NSDictionary *)paramDict {
     NSInteger cbIdTmp = [self fetchCbId:paramDict];
     NSInteger result = 0;
@@ -154,15 +156,18 @@ typedef enum {
         [self sendResultEventWithCallbackId:cbIdTmp dataDict:ret errDict:nil doDelete:YES];
     }
 }
+
 - (void)getVersion:(NSDictionary *)paramDict {
     NSInteger cbIdTmp = [self fetchCbId:paramDict];
     if (cbIdTmp > -1) {
-        NSDictionary *ret = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:1], @"result",
+        NSDictionary *ret = [NSDictionary dictionaryWithObjectsAndKeys:
+                             [NSNumber numberWithInteger:1], @"result",
                              [GeTuiSdk version], @"version",
                              nil];
         [self sendResultEventWithCallbackId:cbIdTmp dataDict:ret errDict:nil doDelete:YES];
     }
 }
+
 - (void)sendMessage:(NSDictionary *)paramDict {
     NSInteger cbIdTmp = [self fetchCbId:paramDict];
     if (cbIdTmp > -1) {
@@ -181,21 +186,8 @@ typedef enum {
         }
         [self sendResultEventWithCallbackId:cbIdTmp dataDict:ret errDict:nil doDelete:YES];
     }
-    
-    //NSArray *sendArray=[paramDict arrayValueForKey:@"sendArray" defaultValue:nil];
-    //    NSData *sendData=[NSKeyedArchiver archivedDataWithRootObject:sendArray];
-    //NSString *sendStr=[paramDict stringValueForKey:@"extraData"  defaultValue:nil];
-    //NSData *sendData=[sendStr dataUsingEncoding:NSUTF8StringEncoding];
-    //NSError *error=nil;
-    //NSString *messageId=[_gexinPusher sendMessage:sendData error:&error];
-    
-    //if(cbId>-1&&error!=nil){
-    //   NSDictionary *ret=[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:0],@"result",
-    //                       messageId,@"messageId",
-    //                      @"sendMsgFeedback",@"type", nil];
-    //   [self sendResultEventWithCallbackId:cbId dataDict:ret errDict:nil doDelete:YES];
-    // }
 }
+
 //暂时不支持接口result都返回-100
 - (void)stopService:(NSDictionary *)paramDict {
     NSInteger cbIdTmp = [self fetchCbId:paramDict];
@@ -204,6 +196,7 @@ typedef enum {
         [self sendResultEventWithCallbackId:cbIdTmp dataDict:ret errDict:nil doDelete:YES];
     }
 }
+
 - (void)sendFeedbackMessage:(NSDictionary *)paramDict {
     NSInteger cbIdTmp = [self fetchCbId:paramDict];
     
@@ -219,6 +212,7 @@ typedef enum {
         [self sendResultEventWithCallbackId:cbIdTmp dataDict:ret errDict:nil doDelete:YES];
     }
 }
+
 - (void)turnOnPush:(NSDictionary *)paramDict {
     NSInteger cbIdTmp = [self fetchCbId:paramDict];
     if (cbIdTmp > -1) {
@@ -228,6 +222,7 @@ typedef enum {
         [self sendResultEventWithCallbackId:cbIdTmp dataDict:ret errDict:nil doDelete:YES];
     }
 }
+
 - (void)turnOffPush:(NSDictionary *)paramDict {
     NSInteger cbIdTmp = [self fetchCbId:paramDict];
     if (cbIdTmp > -1) {
@@ -237,6 +232,7 @@ typedef enum {
         [self sendResultEventWithCallbackId:cbIdTmp dataDict:ret errDict:nil doDelete:YES];
     }
 }
+
 - (void)isPushTurnedOn:(NSDictionary *)paramDict {
     NSInteger cbIdTmp = [self fetchCbId:paramDict];
     if (cbIdTmp > -1) {
@@ -248,6 +244,7 @@ typedef enum {
         [self sendResultEventWithCallbackId:cbIdTmp dataDict:ret errDict:nil doDelete:YES];
     }
 }
+
 - (void)setSilentTime:(NSDictionary *)paramDict {
     NSInteger cbIdTmp = [self fetchCbId:paramDict];
     if (cbIdTmp > -1) {
@@ -255,6 +252,7 @@ typedef enum {
         [self sendResultEventWithCallbackId:cbIdTmp dataDict:ret errDict:nil doDelete:YES];
     }
 }
+
 - (void)payloadMessage:(NSDictionary *)paramDict {
     NSInteger cbIdTmp = [self fetchCbId:paramDict];
     if (cbIdTmp > -1) {
@@ -265,6 +263,7 @@ typedef enum {
 
 // 个推sdk接口回调
 #pragma mark - GexinSdkDelegate
+
 - (void)GeTuiSdkDidRegisterClient:(NSString *)clientId {
     self.clientId = clientId;
     if (cbId > -1) {
@@ -275,8 +274,8 @@ typedef enum {
         [self sendResultEventWithCallbackId:cbId dataDict:ret errDict:nil doDelete:NO];
     }
 }
+
 - (void)GeTuiSdkDidReceivePayloadData:(NSData *)payloadData andTaskId:(NSString *)taskId andMsgId:(NSString *)msgId andOffLine:(BOOL)offLine fromGtAppId:(NSString *)appId {
-    
     
     NSString *payloadMsg = nil;
     if (payloadData) {
@@ -315,6 +314,7 @@ typedef enum {
         [self sendResultEventWithCallbackId:cbId dataDict:ret errDict:nil doDelete:NO];
     }
 }
+
 #pragma mark - 用户通知(推送) _自定义方法
 
 /** 注册远程通知 */
@@ -356,9 +356,11 @@ typedef enum {
         [[UIApplication sharedApplication] registerForRemoteNotificationTypes:apn_type];
     }
 }
+
 #pragma mark - iOS 10中收到推送消息
 
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_10_0
+
 //  iOS 10: App在前台获取到通知
 - (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler {
     
@@ -384,7 +386,9 @@ typedef enum {
     }
     completionHandler();
 }
+
 #endif
+
 #pragma mark - APP运行中接收到通知(推送)处理 - iOS 10以下版本收到推送
 
 /** APP已经接收到“远程”通知(推送) - (App运行在后台/App运行在前台)  */
@@ -427,6 +431,17 @@ typedef enum {
 
 #pragma mark - VOIP related
 
+- (void)voipRegistration:(NSDictionary *)paramDict {
+    voipCBId = [self fetchCbId:paramDict];
+    if (voipCBId > -1) {
+        dispatch_queue_t mainQueue = dispatch_get_main_queue();
+        PKPushRegistry *voipRegistry = [[PKPushRegistry alloc] initWithQueue:mainQueue];
+        voipRegistry.delegate = self;
+        // Set the push type to VoIP
+        voipRegistry.desiredPushTypes = [NSSet setWithObject:PKPushTypeVoIP];
+    }
+}
+
 // 实现 PKPushRegistryDelegate 协议方法
 
 /** 系统返回VOIPToken，并提交个推服务器 */
@@ -454,17 +469,33 @@ typedef enum {
                          payload.dictionaryPayload[@"_gmid_"], @"gmid",  nil];
     
     [self sendResultEventWithCallbackId:voipCBId dataDict:ret errDict:nil doDelete:NO];
-
 }
 
-- (void)voipRegistration:(NSDictionary *)paramDict {
-    voipCBId = [self fetchCbId:paramDict];
-    if (voipCBId > -1) {
-        dispatch_queue_t mainQueue = dispatch_get_main_queue();
-        PKPushRegistry *voipRegistry = [[PKPushRegistry alloc] initWithQueue:mainQueue];
-        voipRegistry.delegate = self;
-        // Set the push type to VoIP
-        voipRegistry.desiredPushTypes = [NSSet setWithObject:PKPushTypeVoIP];
+#pragma mark - applink
+
+- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray *))restorationHandler {
+    if ([userActivity.activityType isEqualToString:NSUserActivityTypeBrowsingWeb]) {
+        NSURL* webUrl = userActivity.webpageURL;
+        
+        //处理个推APPLink回执统计
+        //APPLink url 示例：https://link.gl.ink/getui?n=payload&p=mid， 其中 n=payload 字段存储用户透传信息，可以根据透传内容进行业务操作。
+        NSString* payload = [GeTuiSdk handleApplinkFeedback:webUrl];
+        if (payload) {
+            NSLog(@"个推APPLink中携带的用户payload信息: %@,URL : %@", payload, webUrl);
+            //TODO:用户可根据具体 payload 进行业务处理
+            
+            if (cbId > -1) {
+                NSDictionary *ret = [NSDictionary dictionaryWithObjectsAndKeys:
+                                     [NSNumber numberWithInteger:1], @"result",
+                                     @"AppLinkPayload", @"type",
+                                     payload, @"payload",
+                                     nil];
+                
+                [self sendResultEventWithCallbackId:cbId dataDict:ret errDict:nil doDelete:NO];
+            }
+        }
     }
+    return true;
 }
+
 @end
