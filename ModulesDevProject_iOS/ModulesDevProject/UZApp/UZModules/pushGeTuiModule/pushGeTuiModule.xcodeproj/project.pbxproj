@@ -247,7 +247,6 @@
 					"$(PROJECT_DIR)/pushGeTuiModuleTests/source",
 					"$(PROJECT_DIR)/pushGeTuiModule/source",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/UZEngine",
@@ -269,7 +268,6 @@
 					"$(PROJECT_DIR)/pushGeTuiModuleTests/source",
 					"$(PROJECT_DIR)/pushGeTuiModule/source",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/UZEngine",
