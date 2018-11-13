@@ -16,8 +16,6 @@
 		527BCF7119C431480077631F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 527BCF7019C431480077631F /* main.m */; };
 		527BCF7C19C431480077631F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 527BCF7B19C431480077631F /* Images.xcassets */; };
 		527BCFBA19C434100077631F /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 527BCF9E19C4340F0077631F /* libicucore.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
-		527BCFBB19C434100077631F /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 527BCF9F19C4340F0077631F /* libstdc++.6.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
-		527BCFBC19C434100077631F /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 527BCFA019C4340F0077631F /* libc++.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
 		527BCFBD19C434100077631F /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 527BCFA119C4340F0077631F /* libiconv.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
 		527BCFBE19C434100077631F /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 527BCFA219C4340F0077631F /* libz.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
 		527BCFBF19C434100077631F /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 527BCFA319C4340F0077631F /* libz.1.2.5.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -86,6 +84,7 @@
 		52CA35771AB195EB002579CF /* libresolv.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CA35761AB195EB002579CF /* libresolv.9.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
 		52E586AA1AFC74F100864ACF /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52BA30A919F6367A00D81640 /* CoreAudio.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		84FDFE652047DE7C004EFBFA /* libpushGeTuiModule.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FDFE602047DC05004EFBFA /* libpushGeTuiModule.a */; };
+		95BCA44C219AA9040015C20B /* libresolv.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 95BCA44A219AA9040015C20B /* libresolv.9.tbd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -216,6 +215,7 @@
 		52F19ECB1E28D27900AD8D19 /* libModuleDemo.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libModuleDemo.a; path = "../../../../../Users/test/Library/Developer/Xcode/DerivedData/UZApp-gvosaqoinheqbkfieqmpjkbzcjon/Build/Products/Debug-iphoneos/libModuleDemo.a"; sourceTree = "<group>"; };
 		84FDFE5B2047DC05004EFBFA /* pushGeTuiModule.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = pushGeTuiModule.xcodeproj; path = pushGeTuiModule/pushGeTuiModule.xcodeproj; sourceTree = "<group>"; };
 		84FDFE6A2047E01C004EFBFA /* UZApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UZApp.entitlements; sourceTree = "<group>"; };
+		95BCA44A219AA9040015C20B /* libresolv.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.9.tbd; path = usr/lib/libresolv.9.tbd; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,6 +223,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95BCA44C219AA9040015C20B /* libresolv.9.tbd in Frameworks */,
 				84FDFE652047DE7C004EFBFA /* libpushGeTuiModule.a in Frameworks */,
 				5262179B1CFC3B9C00DEE766 /* WebKit.framework in Frameworks */,
 				52E586AA1AFC74F100864ACF /* CoreAudio.framework in Frameworks */,
@@ -291,8 +292,6 @@
 				522E96FC19EF920C00A2E9C5 /* libbz2.1.0.dylib in Frameworks */,
 				522E96FD19EF920C00A2E9C5 /* libbz2.dylib in Frameworks */,
 				527BCFBA19C434100077631F /* libicucore.dylib in Frameworks */,
-				527BCFBB19C434100077631F /* libstdc++.6.dylib in Frameworks */,
-				527BCFBC19C434100077631F /* libc++.dylib in Frameworks */,
 				527BCFBD19C434100077631F /* libiconv.dylib in Frameworks */,
 				527BCFBE19C434100077631F /* libz.dylib in Frameworks */,
 				527BCFBF19C434100077631F /* libz.1.2.5.dylib in Frameworks */,
@@ -377,6 +376,7 @@
 		527BCFD619C434200077631F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				95BCA44A219AA9040015C20B /* libresolv.9.tbd */,
 				52F19ECB1E28D27900AD8D19 /* libModuleDemo.a */,
 				529FCFB31C001EFC00AFDBAF /* Contacts.framework */,
 				529FCFB41C001EFC00AFDBAF /* ContactsUI.framework */,
@@ -511,7 +511,7 @@
 						CreatedOnToolsVersion = 6.0;
 						DevelopmentTeam = 3MJY223U56;
 						LastSwiftMigration = 0820;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -708,7 +708,7 @@
 				CODE_SIGN_ENTITLEMENTS = UZApp/UZApp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_RESOURCE_RULES_PATH = "";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 3MJY223U56;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/UZApp/UZModules";
@@ -728,8 +728,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ent.com.getui.demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "1ddeec8e-c139-4037-b685-a16c6f98c090";
+				PROVISIONING_PROFILE_SPECIFIER = "Dev: ent.com.getui.demo";
 				SWIFT_OBJC_BRIDGING_HEADER = "UZApp/UZModules/UZApp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -749,7 +749,7 @@
 				CODE_SIGN_ENTITLEMENTS = UZApp/UZApp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_RESOURCE_RULES_PATH = "";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 3MJY223U56;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/UZApp/UZModules";
@@ -768,8 +768,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ent.com.getui.demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "1ddeec8e-c139-4037-b685-a16c6f98c090";
+				PROVISIONING_PROFILE_SPECIFIER = "Dev: ent.com.getui.demo";
 				SWIFT_OBJC_BRIDGING_HEADER = "UZApp/UZModules/UZApp-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

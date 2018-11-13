@@ -9,8 +9,8 @@
     <content src="./index.html" />
     <access origin="*" />
     <feature name="pushGeTui">
-        <param name="ios_appid" value="iMahVVxurw6BNr7XSn9EF2"/>
-        <param name="ios_appkey" value="yIPfqwq6OMAPp6dkqgLpG5"/>
-        <param name="ios_appsecret" value="G0aBqAD6t79JfzTB6Z5lo5"/>
+        <param name="ios_appid" value="8eLAkGIYnGAwA9fVYZU93A"/>
+        <param name="ios_appkey" value="VFX8xYxvVF6w59tsvY6XN"/>
+        <param name="ios_appsecret" value="Kv3TeED8z19QwnMLdzdI35"/>
     </feature>
 </widget>
