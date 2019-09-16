@@ -415,13 +415,11 @@ typedef enum {
 
 /** 远程通知注册成功委托 */
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-    NSString *token = [[deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
-    token = [token stringByReplacingOccurrencesOfString:@" " withString:@""];
-    NSLog(@"\n>>>[DeviceToken Success]:%@\n\n", token);
-    
     // [3]:向个推服务器注册deviceToken
-    _deviceToken = token;
-    [GeTuiSdk registerDeviceToken:token];
+    [GeTuiSdk registerDeviceTokenData:deviceToken];
+    NSLog(@"\n>>>[DeviceToken Success]:%@\n\n", deviceToken);
+    
+    _deviceToken = [self getHexStringForData:deviceToken];
 }
 
 /** 远程通知注册失败委托 */
@@ -447,11 +445,10 @@ typedef enum {
 /** 系统返回VOIPToken，并提交个推服务器 */
 
 - (void)pushRegistry:(PKPushRegistry *)registry didUpdatePushCredentials:(PKPushCredentials *)credentials forType:(NSString *)type {
-    NSString *voiptoken = [credentials.token.description stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
-    voiptoken = [voiptoken stringByReplacingOccurrencesOfString:@" " withString:@""];
-    NSLog(@"\n>>>[VoIP Token]:%@\n\n",voiptoken);
-    //向个推服务器注册 VoipToken
-    [GeTuiSdk registerVoipToken:voiptoken];
+    //向个推服务器注册 VoipToken 为了方便开发者，建议使用新方法
+    [GeTuiSdk registerVoipTokenCredentials:credentials.token];
+    NSLog(@"\n>>[VoipToken(NSData)]: %@", credentials.token);
+
 }
 
 /** 接收VOIP推送中的payload进行业务逻辑处理（一般在这里调起本地通知实现连续响铃、接收视频呼叫请求等操作），并执行个推VOIP回执统计 */
@@ -496,6 +493,18 @@ typedef enum {
         }
     }
     return true;
+}
+
+#pragma mark - utils
+
+- (NSString *)getHexStringForData:(NSData *)data {
+    NSUInteger len = [data length];
+        char *chars = (char *) [data bytes];
+        NSMutableString *hexString = [[NSMutableString alloc] init];
+        for (NSUInteger i = 0; i < len; i++) {
+            [hexString appendString:[NSString stringWithFormat:@"%0.2hhx", chars[i]]];
+        }
+        return hexString;
 }
 
 @end

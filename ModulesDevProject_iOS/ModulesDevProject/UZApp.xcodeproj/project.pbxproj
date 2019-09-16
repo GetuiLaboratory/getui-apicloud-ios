@@ -22,7 +22,6 @@
 		527BCFC019C434100077631F /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 527BCFA419C4340F0077631F /* libsqlite3.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
 		527BCFF519C4346B0077631F /* uz in Resources */ = {isa = PBXBuildFile; fileRef = 527BCFF319C4346B0077631F /* uz */; };
 		527BCFF619C4346B0077631F /* widget in Resources */ = {isa = PBXBuildFile; fileRef = 527BCFF419C4346B0077631F /* widget */; };
-		529FCFD21C004DFE00AFDBAF /* libUZEngine.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 529FCFCD1C004DFE00AFDBAF /* libUZEngine.a */; };
 		52BA309519F6367A00D81640 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 527BCFAF19C4340F0077631F /* AddressBook.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		52BA309619F6367A00D81640 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 527BCFB019C4340F0077631F /* AddressBookUI.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		52BA309819F6367A00D81640 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 527BCFA819C4340F0077631F /* AssetsLibrary.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -83,6 +82,11 @@
 		52CA35751AB195C9002579CF /* libresolv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CA35741AB195C9002579CF /* libresolv.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
 		52CA35771AB195EB002579CF /* libresolv.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CA35761AB195EB002579CF /* libresolv.9.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
 		52E586AA1AFC74F100864ACF /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52BA30A919F6367A00D81640 /* CoreAudio.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		6BD3AFA12329F40C003561F5 /* libUZEngine.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BD3AF9F2329EF1C003561F5 /* libUZEngine.a */; };
+		6BD3AFA82329F7BA003561F5 /* libminizip.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BD3AFA42329F7BA003561F5 /* libminizip.a */; };
+		6BD3AFA92329F7BA003561F5 /* libopencore-amrwb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BD3AFA52329F7BA003561F5 /* libopencore-amrwb.a */; };
+		6BD3AFAA2329F7BA003561F5 /* libopencore-amrnb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BD3AFA62329F7BA003561F5 /* libopencore-amrnb.a */; };
+		6BD3AFAB2329F7BA003561F5 /* libAMR.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BD3AFA72329F7BA003561F5 /* libAMR.a */; };
 		84FDFE652047DE7C004EFBFA /* libpushGeTuiModule.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FDFE602047DC05004EFBFA /* libpushGeTuiModule.a */; };
 		95BCA44C219AA9040015C20B /* libresolv.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 95BCA44A219AA9040015C20B /* libresolv.9.tbd */; };
 /* End PBXBuildFile section */
@@ -157,7 +161,6 @@
 		527BCFF419C4346B0077631F /* widget */ = {isa = PBXFileReference; lastKnownFileType = folder; path = widget; sourceTree = "<group>"; };
 		529FCFB31C001EFC00AFDBAF /* Contacts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Contacts.framework; path = System/Library/Frameworks/Contacts.framework; sourceTree = SDKROOT; };
 		529FCFB41C001EFC00AFDBAF /* ContactsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ContactsUI.framework; path = System/Library/Frameworks/ContactsUI.framework; sourceTree = SDKROOT; };
-		529FCFCD1C004DFE00AFDBAF /* libUZEngine.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUZEngine.a; sourceTree = "<group>"; };
 		529FCFCE1C004DFE00AFDBAF /* NSDictionaryUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDictionaryUtils.h; sourceTree = "<group>"; };
 		529FCFCF1C004DFE00AFDBAF /* UZAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UZAppDelegate.h; sourceTree = "<group>"; };
 		529FCFD01C004DFE00AFDBAF /* UZAppUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UZAppUtils.h; sourceTree = "<group>"; };
@@ -213,6 +216,11 @@
 		52CA35741AB195C9002579CF /* libresolv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libresolv.dylib; path = usr/lib/libresolv.dylib; sourceTree = SDKROOT; };
 		52CA35761AB195EB002579CF /* libresolv.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libresolv.9.dylib; path = usr/lib/libresolv.9.dylib; sourceTree = SDKROOT; };
 		52F19ECB1E28D27900AD8D19 /* libModuleDemo.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libModuleDemo.a; path = "../../../../../Users/test/Library/Developer/Xcode/DerivedData/UZApp-gvosaqoinheqbkfieqmpjkbzcjon/Build/Products/Debug-iphoneos/libModuleDemo.a"; sourceTree = "<group>"; };
+		6BD3AF9F2329EF1C003561F5 /* libUZEngine.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUZEngine.a; sourceTree = "<group>"; };
+		6BD3AFA42329F7BA003561F5 /* libminizip.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libminizip.a; sourceTree = "<group>"; };
+		6BD3AFA52329F7BA003561F5 /* libopencore-amrwb.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libopencore-amrwb.a"; sourceTree = "<group>"; };
+		6BD3AFA62329F7BA003561F5 /* libopencore-amrnb.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libopencore-amrnb.a"; sourceTree = "<group>"; };
+		6BD3AFA72329F7BA003561F5 /* libAMR.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAMR.a; sourceTree = "<group>"; };
 		84FDFE5B2047DC05004EFBFA /* pushGeTuiModule.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = pushGeTuiModule.xcodeproj; path = pushGeTuiModule/pushGeTuiModule.xcodeproj; sourceTree = "<group>"; };
 		84FDFE6A2047E01C004EFBFA /* UZApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UZApp.entitlements; sourceTree = "<group>"; };
 		95BCA44A219AA9040015C20B /* libresolv.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.9.tbd; path = usr/lib/libresolv.9.tbd; sourceTree = SDKROOT; };
@@ -243,12 +251,12 @@
 				52BA310419F6368400D81640 /* SceneKit.framework in Frameworks */,
 				52BA310519F6368400D81640 /* Social.framework in Frameworks */,
 				52BA310619F6368400D81640 /* SpriteKit.framework in Frameworks */,
-				529FCFD21C004DFE00AFDBAF /* libUZEngine.a in Frameworks */,
 				52BA310819F6368400D81640 /* Twitter.framework in Frameworks */,
 				52BA310919F6368400D81640 /* VideoToolbox.framework in Frameworks */,
 				52BA30D419F6368400D81640 /* MediaPlayer.framework in Frameworks */,
 				52BA30D519F6368400D81640 /* MessageUI.framework in Frameworks */,
 				52BA30D619F6368400D81640 /* MobileCoreServices.framework in Frameworks */,
+				6BD3AFAA2329F7BA003561F5 /* libopencore-amrnb.a in Frameworks */,
 				52BA30D719F6368400D81640 /* QuickLook.framework in Frameworks */,
 				52BA30D819F6368400D81640 /* Security.framework in Frameworks */,
 				52BA30D919F6368400D81640 /* SystemConfiguration.framework in Frameworks */,
@@ -258,6 +266,7 @@
 				52BA30BF19F6367A00D81640 /* AVKit.framework in Frameworks */,
 				52BA30C319F6367A00D81640 /* CoreBluetooth.framework in Frameworks */,
 				52BA30C419F6367A00D81640 /* CoreFoundation.framework in Frameworks */,
+				6BD3AFA82329F7BA003561F5 /* libminizip.a in Frameworks */,
 				52BA30C519F6367A00D81640 /* CoreImage.framework in Frameworks */,
 				52BA30C619F6367A00D81640 /* CoreMIDI.framework in Frameworks */,
 				52BA30C719F6367A00D81640 /* CoreMotion.framework in Frameworks */,
@@ -284,7 +293,9 @@
 				52BA30A319F6367A00D81640 /* ImageIO.framework in Frameworks */,
 				52CA35771AB195EB002579CF /* libresolv.9.dylib in Frameworks */,
 				52CA35751AB195C9002579CF /* libresolv.dylib in Frameworks */,
+				6BD3AFA92329F7BA003561F5 /* libopencore-amrwb.a in Frameworks */,
 				52BA311119F63B0300D81640 /* libbsm.dylib in Frameworks */,
+				6BD3AFA12329F40C003561F5 /* libUZEngine.a in Frameworks */,
 				52BA310E19F63AB200D81640 /* libarchive.2.dylib in Frameworks */,
 				52BA310F19F63AB200D81640 /* libarchive.dylib in Frameworks */,
 				522E970019EF922000A2E9C5 /* libxml2.2.dylib in Frameworks */,
@@ -294,6 +305,7 @@
 				527BCFBA19C434100077631F /* libicucore.dylib in Frameworks */,
 				527BCFBD19C434100077631F /* libiconv.dylib in Frameworks */,
 				527BCFBE19C434100077631F /* libz.dylib in Frameworks */,
+				6BD3AFAB2329F7BA003561F5 /* libAMR.a in Frameworks */,
 				527BCFBF19C434100077631F /* libz.1.2.5.dylib in Frameworks */,
 				527BCFC019C434100077631F /* libsqlite3.dylib in Frameworks */,
 			);
@@ -354,7 +366,8 @@
 		527BCF9619C4339B0077631F /* UZEngine */ = {
 			isa = PBXGroup;
 			children = (
-				529FCFCD1C004DFE00AFDBAF /* libUZEngine.a */,
+				6BD3AFA32329F7BA003561F5 /* Dependencies */,
+				6BD3AF9F2329EF1C003561F5 /* libUZEngine.a */,
 				529FCFCE1C004DFE00AFDBAF /* NSDictionaryUtils.h */,
 				5262179A1CFC3AAE00DEE766 /* UIViewControllerExtension.h */,
 				529FCFCF1C004DFE00AFDBAF /* UZAppDelegate.h */,
@@ -468,6 +481,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		6BD3AFA32329F7BA003561F5 /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				6BD3AFA42329F7BA003561F5 /* libminizip.a */,
+				6BD3AFA52329F7BA003561F5 /* libopencore-amrwb.a */,
+				6BD3AFA62329F7BA003561F5 /* libopencore-amrnb.a */,
+				6BD3AFA72329F7BA003561F5 /* libAMR.a */,
+			);
+			path = Dependencies;
+			sourceTree = "<group>";
+		};
 		84FDFE5C2047DC05004EFBFA /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -540,6 +564,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 				"zh-Hans",
@@ -646,7 +671,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
@@ -687,7 +712,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
@@ -700,7 +725,6 @@
 		527BCF8F19C431480077631F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -713,12 +737,13 @@
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/UZApp/UZModules";
 				INFOPLIST_FILE = UZApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/UZApp/UZEngine",
 					"$(PROJECT_DIR)/UZApp/UZModules",
+					"$(PROJECT_DIR)/UZApp/UZEngine/Dependencies",
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
@@ -741,7 +766,6 @@
 		527BCF9019C431480077631F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -754,12 +778,13 @@
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/UZApp/UZModules";
 				INFOPLIST_FILE = UZApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/UZApp/UZEngine",
 					"$(PROJECT_DIR)/UZApp/UZModules",
+					"$(PROJECT_DIR)/UZApp/UZEngine/Dependencies",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
