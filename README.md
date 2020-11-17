@@ -8,17 +8,17 @@
 </ul>
 
 
-#**概述**
+# **概述**
 
 pushGeTui封装了个推消息推送平台的SDK，使用此模块可轻松实现服务端向客户端推送通知和透传消息的功能。
 
-###名词解释：
+### 名词解释：
 
 CID：用于标识推送目标的用户ID；CID全局唯一；同一手机不同包名的应用拥有不同的CID；正常情况下，CID会在SD卡进行存储，因此即使应用卸载重装，CID也保持不变；但SD卡缓存文件被清理的情况下，应用卸载重装CID会变更，第三方应用需要及时将最新的CID更新到第三方服务端
 
 APPKEY/APPID：从个推平台上的获得的应用标识
 
-###个推支持以下三种消息推送形式：
+### 个推支持以下三种消息推送形式：
 
 1.指定单个CID进行消息单推；
 
@@ -26,25 +26,25 @@ APPKEY/APPID：从个推平台上的获得的应用标识
 
 3.指定同一APPID下的所有CID进行全量推送。
 
-###个推消息推送基本流程说明：
+### 个推消息推送基本流程说明：
 
-1.在个推开放平台（ http://dev.getui.com ）注册帐号，并创建应用，获取APPKEY/APPID/APPSECRET参数。具体流程常见“个推开放API配置指南”
+1. 在个推开放平台（ http://dev.getui.com ）注册帐号，并创建应用，获取APPKEY/APPID/APPSECRET参数。具体流程常见“个推开放API配置指南”
 
-2.在config中配置pushGeTui feature，填写上述应用参数
+2. 在config中配置pushGeTui feature，填写上述应用参数
 
-3.应用启动后调用initialize进行推送SDK初始化，并调用register接口注册透传消息监听器；
+3. 应用启动后调用initialize进行推送SDK初始化，并调用register接口注册透传消息监听器；
 
-4.推送服务获取到推送标识CID后返回给JS层，应用一般需要将该CID和用户ID做一个绑定，记录到服务端；
+4. 推送服务获取到推送标识CID后返回给JS层，应用一般需要将该CID和用户ID做一个绑定，记录到服务端；
 
-5.服务端指定CID进行透传消息推送（可以通过个推开放平台直接操作，也可以使用服务端SDK调用消息推送接口），携带透传消息内容Payload
+5. 服务端指定CID进行透传消息推送（可以通过个推开放平台直接操作，也可以使用服务端SDK调用消息推送接口），携带透传消息内容Payload
 
-6.推送服务接收到消息后，通过register接口注册的消息监听器回调给JS层
+6. 推送服务接收到消息后，通过register接口注册的消息监听器回调给JS层
 
-7.JS层处理透传消息内容Payload，进行相应的处理。
+7. JS层处理透传消息内容Payload，进行相应的处理。
 
-8.服务端也可以指定CID进行通知消息推送，通知点击后启动APICloud应用。
+8. 服务端也可以指定CID进行通知消息推送，通知点击后启动APICloud应用。
 
-###关于透传消息的
+### 关于透传消息的
 受到JS层目前机制限制，如果apicloud应用未运行，JS层是无法处理透传数据的。
 
 
@@ -70,7 +70,7 @@ APPKEY/APPID：从个推平台上的获得的应用标识
 		2.android_appid：应用ID，通过个推平台获得
 		3.android_appsecret：通过个推平台获得
 		4.android_groupid: 目前留空即可
-		
+
 ***接口设计说明***
 一、cid、payload、occurError都使用通过initialize传递进去的callback，所有的回调里面都定义了一个type参数，我们可以通过判断type参数来判断回调的类型.
 type类型参数说明：
@@ -113,14 +113,13 @@ function callback(ret,err){
 	<div><a href="#a1">initialize</a></div>
 	<div><a href="#a2">registerDeviceToken</a></div>
 </div>
-
-#**initialize**<div id="a1"></div>
+# **initialize**<div id="a1"></div>
 
 初始化推送服务
 
 initialize(callback(ret, err))
 
-##callback(ret, err)
+## callback(ret, err)
 
 ret：
 
@@ -164,8 +163,7 @@ err：
 }
 ```
 
-
-##示例代码
+## 示例代码
 
 ```js
 var uzgetuisdk = api.require('pushGeTui');
@@ -185,22 +183,23 @@ uzgetuisdk.initialize(function(ret) {
 });
 ```
 
-##补充说明
+## 补充说明
 
 在每次应用启动的初始化过程中，都需要调用个推SDK初始化函数。这时候传递的参数callback将会用于cid、payload、occurError的回调。
 
-##可用性
+## 可用性
 
 iOS系统，Android系统
 
 可提供的1.0.0及更高版本
-#**registerDeviceToken**<div id="a2"></div>
+
+# **registerDeviceToken**<div id="a2"></div>
 
 注册deviceToken
 
 registerDeviceToken(callback(ret, err))
 
-##callback(ret, err)
+## callback(ret, err)
 
 ret：
 
@@ -214,8 +213,7 @@ ret：
 }
 ```
 
-
-##示例代码
+## 示例代码
 
 ```js
 function registerDeviceToken(){
@@ -229,10 +227,10 @@ function registerDeviceToken(){
     }
 ```
 
-##补充说明
+## 补充说明
 如果发生错误会在occurError里面回调。
 
-##可用性
+## 可用性
 
 iOS系统
 
@@ -253,13 +251,13 @@ iOS系统
 	<div><a href="#b7"> setBadge </a></div>
 </div>
 
-#**setTag**<div id="b1"></div>
+# **setTag**<div id="b1"></div>
 
 为用户设置标签。针对单个CID设置标签（tag）列表，服务端推送可以指定标签进行定向群发
 
 setTag({params},callback(ret, err))
 
-##params
+## params
 
 tags：
 
@@ -267,7 +265,7 @@ tags：
 - 默认值：无
 - 描述：标签列表，以逗号(,)分割，标签名建议采用英文和数字的组合
 
-##callback(ret, err)
+## callback(ret, err)
 
 ret：
 
@@ -294,7 +292,7 @@ err：
 }
 ```
 
-##示例代码
+## 示例代码
 
 ```js
 var uzgetuisdk = api.require('pushGeTui');
@@ -304,24 +302,23 @@ uzgetuisdk.setTag(param,function(ret) {
 });
 ```
 
-##补充说明
+## 补充说明
 
 （暂无）
 
-##可用性
+## 可用性
 
 iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
-
-#**bindAlias**<div id="b2"></div>
+# **bindAlias**<div id="b2"></div>
 
 绑定用户别名。针对单个CID设置别名，一个别名可以对应多个CID。可以指定别名进行消息推送
 
 bindAlias({params},callback(ret, err))
 
-##params
+## params
 
 alias：
 
@@ -329,7 +326,7 @@ alias：
 - 默认值：无
 - 描述：别名，建议采用英文和数字组合
 
-##callback(ret, err)
+## callback(ret, err)
 
 ret：
 
@@ -356,7 +353,7 @@ err：
 }
 ```
 
-##示例代码
+## 示例代码
 
 ```js
 var uzgetuisdk = api.require('pushGeTui');
@@ -366,24 +363,23 @@ uzgetuisdk.bindAlias(param,function(ret) {
 });
 ```
 
-##补充说明
+## 补充说明
 
 （暂无）
 
-##可用性
+## 可用性
 
 iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
-
-#**unBindAlias**<div id="b3"></div>
+# **unBindAlias**<div id="b3"></div>
 
 解绑用户别名。针对单个CID取消设置别名。
 
 unBindAlias({params},callback(ret, err))
 
-##params
+## params
 
 alias：
 
@@ -391,7 +387,7 @@ alias：
 - 默认值：无
 - 描述：别名，建议采用英文和数字组合
 
-##callback(ret, err)
+## callback(ret, err)
 
 ret：
 
@@ -418,7 +414,7 @@ err：
 }
 ```
 
-##示例代码
+## 示例代码
 
 ```js
 var uzgetuisdk = api.require('pushGeTui');
@@ -428,24 +424,23 @@ uzgetuisdk.unBindAlias(param,function(ret) {
 });
 ```
 
-##补充说明
+## 补充说明
 
 （暂无）
 
-##可用性
+## 可用性
 
 iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
-
-#**stopService**<div id="b4"></div>
+# **stopService**<div id="b4"></div>
 
 完全停止SDK的服务。停止推送服务，停止所有业务逻辑
 
 stopService(callback(ret, err))
 
-##callback(ret, err)
+## callback(ret, err)
 
 ret：
 
@@ -472,7 +467,7 @@ err：
 }
 ```
 
-##示例代码
+## 示例代码
 
 ```js
 var uzgetuisdk = api.require('pushGeTui');
@@ -481,7 +476,7 @@ uzgetuisdk.stopService(function(ret) {
 });
 ```
 
-##补充说明
+## 补充说明
 
 （暂无）
 
@@ -491,14 +486,13 @@ Android系统
 
 可提供的1.0.0及更高版本
 
-
-#**sendFeedbackMessage**<div id="b5"></div>
+# **sendFeedbackMessage**<div id="b5"></div>
 
 上行第三方自定义回执。第三方指定自定义actionid，便于对推送效果做统计分析。
 
 sendFeedbackMessage({params},callback(ret, err))
 
-##params
+## params
 
 taskid：
 
@@ -518,7 +512,7 @@ actionid：
 - 默认值：无
 - 描述：自定义动作id，范围为90001-90999。第三方可以对支付、页面访问等用户操作进行打点。
 
-##callback(ret, err)
+## callback(ret, err)
 
 ret：
 
@@ -545,7 +539,7 @@ err：
 }
 ```
 
-##示例代码
+## 示例代码
 
 ```js
 var uzgetuisdk = api.require('pushGeTui');
@@ -555,23 +549,23 @@ uzgetuisdk.sendFeedbackMessage(param,function(ret) {
 });
 ```
 
-##补充说明
+## 补充说明
 
 （暂无）
 
-##可用性
+## 可用性
 
 iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
-#**fetchClientId**<div id="b6"></div>
+# **fetchClientId**<div id="b6"></div>
 
 获取cid
 
 fetchClientId(callback(ret, err))
 
-##callback(ret, err)
+## callback(ret, err)
 
 ret：
 
@@ -588,7 +582,7 @@ ret：
 
 
 
-##示例代码
+## 示例代码
 
 ```js
 var uzgetuisdk = api.require('pushGeTui');
@@ -598,23 +592,23 @@ uzgetuisdk.fetchClientId(function(ret,err){
     }
 ```
 
-##补充说明
+## 补充说明
 
 （暂无）
 
-##可用性
+## 可用性
 
 android系统 iOS系统
 
 可提供的1.0.0及更高版本
 
-#**setBadge**<div id="b7"></div>
+# **setBadge**<div id="b7"></div>
 
 设置角标功能,同步服务器角标计数
 
 setBadge({params},callback(ret, err))
 
-##params
+## params
 
 badge：
 
@@ -622,7 +616,7 @@ badge：
 - 默认值：无
 - 描述：0
 
-##callback(ret, err)
+## callback(ret, err)
 
 ret：
 
@@ -649,7 +643,7 @@ err：
 }
 ```
 
-##示例代码
+## 示例代码
 
 ```js
 var uzgetuisdk = api.require('pushGeTui');
@@ -659,11 +653,11 @@ uzgetuisdk.setBadge(param,function(ret) {
 });
 ```
 
-##补充说明
+## 补充说明
 
 （暂无）
 
-##可用性
+## 可用性
 
 iOS系统
 
@@ -683,13 +677,13 @@ version > 1.1.9
 </div>
 
 
-#**turnOnPush**<div id="c1"></div>
+# **turnOnPush**<div id="c1"></div>
 
 开启Push推送。继续服务端连接。常见turnOffPush
 
 turnOnPush(callback(ret, err))
 
-##callback(ret, err)
+## callback(ret, err)
 
 ret：
 
@@ -716,7 +710,7 @@ err：
 }
 ```
 
-##示例代码
+## 示例代码
 
 ```js
 var uzgetuisdk = api.require('pushGeTui');
@@ -725,24 +719,23 @@ uzgetuisdk.turnOnPush(function(ret) {
 });
 ```
 
-##补充说明
+## 补充说明
 
 （暂无）
 
-##可用性
+## 可用性
 
 iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
-
-#**turnOffPush**<div id="c2"></div>
+# **turnOffPush**<div id="c2"></div>
 
 关闭Push推送。暂停服务端连接，即使调用initialize也不会继续服务端连接。
 
 turnOffPush(callback(ret, err))
 
-##callback(ret, err)
+## callback(ret, err)
 
 ret：
 
@@ -769,7 +762,7 @@ err：
 }
 ```
 
-##示例代码
+## 示例代码
 
 ```js
 var uzgetuisdk = api.require('pushGeTui');
@@ -778,24 +771,23 @@ uzgetuisdk.turnOffPush(function(ret) {
 });
 ```
 
-##补充说明
+## 补充说明
 
 （暂无）
 
-##可用性
+## 可用性
 
 iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
-
-#**isPushTurnedOn**<div id="c3"></div>
+# **isPushTurnedOn**<div id="c3"></div>
 
 获取当前推送服务开关状态。该状态只和turnOnPush和turnOffPush操作相关
 
 isPushTurnedOn(callback(ret, err))
 
-##callback(ret, err)
+## callback(ret, err)
 
 ret：
 
@@ -823,7 +815,7 @@ err：
 }
 ```
 
-##示例代码
+## 示例代码
 
 ```js
 var uzgetuisdk = api.require('pushGeTui');
@@ -832,24 +824,23 @@ uzgetuisdk.isPushTurnedOn(function(ret) {
 });
 ```
 
-##补充说明
+## 补充说明
 
 （暂无）
 
-##可用性
+## 可用性
 
 iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
-
-#**getVersion**<div id="c4"></div>
+# **getVersion**<div id="c4"></div>
 
 获取SDK版本号。
 
 getVerison(callback(ret, err))
 
-##callback(ret, err)
+## callback(ret, err)
 
 ret：
 
@@ -877,7 +868,7 @@ err：
 }
 ```
 
-##示例代码
+## 示例代码
 
 ```js
 var uzgetuisdk = api.require('pushGeTui');
@@ -886,11 +877,11 @@ uzgetuisdk.getVersion(function(ret) {
 });
 ```
 
-##补充说明
+## 补充说明
 
 （暂无）
 
-##可用性
+## 可用性
 
 Android系统，iOS系统
 
@@ -898,13 +889,13 @@ Android系统，iOS系统
 
 
 
-#**setSilentTime**<div id="c5"></div>
+# **setSilentTime**<div id="c5"></div>
 
 设置SDK静默时间。在指定时间段内，暂停推送服务联网，可以避免用户打扰，同时起到省电省流量的作用。
 
 setSilentTime({params},callback(ret, err))
 
-##params
+## params
 
 beginHour：
 
@@ -922,7 +913,7 @@ duration：
 - 例如：beginHour=9、duration=12，含义为早9点到晚9点之间静默
 - 例如：beginHour=21、duration=12，含义为晚9点到早9点之间静默
 
-##callback(ret, err)
+## callback(ret, err)
 
 ret：
 
@@ -949,7 +940,7 @@ err：
 }
 ```
 
-##示例代码
+## 示例代码
 
 ```js
 var uzgetuisdk = api.require('pushGeTui');
@@ -959,11 +950,11 @@ uzgetuisdk.setSilentTime(param,function(ret) {
 });
 ```
 
-##补充说明
+## 补充说明
 
 （暂无）
 
-##可用性
+## 可用性
 
 Android系统
 
@@ -971,13 +962,13 @@ Android系统
 
 
 
-#**sendMessage**<div id="c6"></div>
+# **sendMessage**<div id="c6"></div>
 
 发送上行消息，服务端使用MMP SDK接收客户端发送的上行消息。
 
 sendMessage({params},callback(ret,err))
 
-##params
+## params
 
 taskid：
 
@@ -991,7 +982,7 @@ extraData：
 - 默认值：无
 - 描述：上行消息内容，由客户端自行定义，建议采用json格式
 
-##callback(ret, err)
+## callback(ret, err)
 
 ret：
 
@@ -1017,7 +1008,7 @@ err：
 }
 ```
 
-##示例代码
+## 示例代码
 
 ```js
 var uzgetuisdk = api.require('pushGeTui');
@@ -1027,24 +1018,23 @@ uzgetuisdk.sendMessage(param,function(ret) {
 });
 ```
 
-##补充说明
+## 补充说明
 
 （暂无）
 
-##可用性
+## 可用性
 
 iOS系统，Android系统
 
 可提供的1.0.0及更高版本
 
-
-#**payloadMessage**<div id="c7"></div>
+# **payloadMessage**<div id="c7"></div>
 
 app 处于未启动状态时，点击通知打开程序获取透传消息。
 
 payloadMessage(callback(ret, err))
 
-##callback(ret, err)
+## callback(ret, err)
 
 ret：
 
@@ -1071,7 +1061,7 @@ err：
 }
 ```
 
-##示例代码
+## 示例代码
 
 ```js
 uzgetuisdk.payloadMessage(function(ret) {
@@ -1079,11 +1069,11 @@ uzgetuisdk.payloadMessage(function(ret) {
 });
 ```
 
-##补充说明
+## 补充说明
 
 （暂无）
 
-##可用性
+## 可用性
 
 Android系统
 
