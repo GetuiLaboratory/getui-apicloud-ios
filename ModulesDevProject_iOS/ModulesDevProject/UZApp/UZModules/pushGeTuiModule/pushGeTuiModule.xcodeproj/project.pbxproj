@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		84FDFE692047DFAA004EFBFA /* GTSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FDFE672047DFAA004EFBFA /* GTSDK.a */; };
+		2A6EFADD2564C03B00A0364E /* GTSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A6EFADC2564C03B00A0364E /* GTSDK.a */; };
 		84FDFE6D2047EEBB004EFBFA /* UZModuleGetuiSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FDFE6C2047EEBB004EFBFA /* UZModuleGetuiSDK.m */; };
 /* End PBXBuildFile section */
 
@@ -25,12 +25,14 @@
 
 /* Begin PBXFileReference section */
 		09C9D7901B2152EF009755F8 /* libpushGeTuiModule.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libpushGeTuiModule.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		09C9D7AD1B2176E9009755F8 /* NSDictionaryUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDictionaryUtils.h; sourceTree = "<group>"; };
-		09C9D7AE1B2176E9009755F8 /* UZAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UZAppDelegate.h; sourceTree = "<group>"; };
-		09C9D7AF1B2176E9009755F8 /* UZAppUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UZAppUtils.h; sourceTree = "<group>"; };
-		09C9D7B01B2176E9009755F8 /* UZModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UZModule.h; sourceTree = "<group>"; };
-		84FDFE672047DFAA004EFBFA /* GTSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = GTSDK.a; sourceTree = "<group>"; };
-		84FDFE682047DFAA004EFBFA /* GeTuiSdk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeTuiSdk.h; sourceTree = "<group>"; };
+		2A6EFADC2564C03B00A0364E /* GTSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = GTSDK.a; sourceTree = "<group>"; };
+		2A6EFADE2564C04900A0364E /* GeTuiSdk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeTuiSdk.h; sourceTree = "<group>"; };
+		2A6EFAE12564C0C700A0364E /* UIViewControllerExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIViewControllerExtension.h; path = ../../../../../../../../../../Downloads/ModulesDevProject_1.1.46/ModulesDevProject/ModulesDevProject_iOS/ModulesDevProject/UZApp/UZModules/ModuleDemo/ModuleDemo/UZEngine/UIViewControllerExtension.h; sourceTree = "<group>"; };
+		2A6EFAE22564C0C700A0364E /* UZAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UZAppDelegate.h; path = ../../../../../../../../../../Downloads/ModulesDevProject_1.1.46/ModulesDevProject/ModulesDevProject_iOS/ModulesDevProject/UZApp/UZModules/ModuleDemo/ModuleDemo/UZEngine/UZAppDelegate.h; sourceTree = "<group>"; };
+		2A6EFAE32564C0C700A0364E /* NSDictionaryUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSDictionaryUtils.h; path = ../../../../../../../../../../Downloads/ModulesDevProject_1.1.46/ModulesDevProject/ModulesDevProject_iOS/ModulesDevProject/UZApp/UZModules/ModuleDemo/ModuleDemo/UZEngine/NSDictionaryUtils.h; sourceTree = "<group>"; };
+		2A6EFAE42564C0C700A0364E /* UZAppUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UZAppUtils.h; path = ../../../../../../../../../../Downloads/ModulesDevProject_1.1.46/ModulesDevProject/ModulesDevProject_iOS/ModulesDevProject/UZApp/UZModules/ModuleDemo/ModuleDemo/UZEngine/UZAppUtils.h; sourceTree = "<group>"; };
+		2A6EFAE52564C0C700A0364E /* UZModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UZModule.h; path = ../../../../../../../../../../Downloads/ModulesDevProject_1.1.46/ModulesDevProject/ModulesDevProject_iOS/ModulesDevProject/UZApp/UZModules/ModuleDemo/ModuleDemo/UZEngine/UZModule.h; sourceTree = "<group>"; };
+		2A6EFAE62564C0C700A0364E /* UZURLTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UZURLTask.h; path = ../../../../../../../../../../Downloads/ModulesDevProject_1.1.46/ModulesDevProject/ModulesDevProject_iOS/ModulesDevProject/UZApp/UZModules/ModuleDemo/ModuleDemo/UZEngine/UZURLTask.h; sourceTree = "<group>"; };
 		84FDFE6B2047EEB5004EFBFA /* UZModuleGetuiSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UZModuleGetuiSDK.h; sourceTree = "<group>"; };
 		84FDFE6C2047EEBB004EFBFA /* UZModuleGetuiSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UZModuleGetuiSDK.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -40,7 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84FDFE692047DFAA004EFBFA /* GTSDK.a in Frameworks */,
+				2A6EFADD2564C03B00A0364E /* GTSDK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,10 +69,12 @@
 		09C9D7AB1B2176E9009755F8 /* UZEngine */ = {
 			isa = PBXGroup;
 			children = (
-				09C9D7AD1B2176E9009755F8 /* NSDictionaryUtils.h */,
-				09C9D7AE1B2176E9009755F8 /* UZAppDelegate.h */,
-				09C9D7AF1B2176E9009755F8 /* UZAppUtils.h */,
-				09C9D7B01B2176E9009755F8 /* UZModule.h */,
+				2A6EFAE32564C0C700A0364E /* NSDictionaryUtils.h */,
+				2A6EFAE12564C0C700A0364E /* UIViewControllerExtension.h */,
+				2A6EFAE22564C0C700A0364E /* UZAppDelegate.h */,
+				2A6EFAE42564C0C700A0364E /* UZAppUtils.h */,
+				2A6EFAE52564C0C700A0364E /* UZModule.h */,
+				2A6EFAE62564C0C700A0364E /* UZURLTask.h */,
 			);
 			path = UZEngine;
 			sourceTree = "<group>";
@@ -87,8 +91,8 @@
 		84FDFE382047D748004EFBFA /* source */ = {
 			isa = PBXGroup;
 			children = (
-				84FDFE682047DFAA004EFBFA /* GeTuiSdk.h */,
-				84FDFE672047DFAA004EFBFA /* GTSDK.a */,
+				2A6EFADE2564C04900A0364E /* GeTuiSdk.h */,
+				2A6EFADC2564C03B00A0364E /* GTSDK.a */,
 				84FDFE6B2047EEB5004EFBFA /* UZModuleGetuiSDK.h */,
 				84FDFE6C2047EEBB004EFBFA /* UZModuleGetuiSDK.m */,
 			);

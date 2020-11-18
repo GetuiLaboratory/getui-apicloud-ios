@@ -75,8 +75,18 @@ APPKEY/APPID：从个推平台上的获得的应用标识
 一、cid、payload、occurError都使用通过initialize传递进去的callback，所有的回调里面都定义了一个type参数，我们可以通过判断type参数来判断回调的类型.
 type类型参数说明：
         1、cid:初始化（initialize）回调回来的cid；
-        2、payload：下发payload消息；
-        3、occurError：所有发生错误时候的回调；
+
+​        2、payload：下发payload消息；
+
+​        3、occurError：所有发生错误时候的回调；
+
+​		4、status：SDK运行状态通知
+
+​		5、tags：设置标签回调
+
+​		6、queryTag：查询当前绑定tag结果返回
+
+​		7、alias：SDK绑定、解绑回调
 
 二、返回值result值说明：
         1、0：失败
@@ -88,14 +98,26 @@ function callback(ret,err){
       switch(ret.type)
       {
           case 'cid':
-          log='cid:'+ret.cid;
-          break;
+          	log='cid:'+ret.cid;
+          	break;
           case 'payload':
-          log='payload:'+ret.payload;
-          break;
+          	log='payload:'+ret.payload;
+          	break;
           case'occurError':
-          log='occurError';
-          break;
+          	log='occurError';
+          	break;
+	       	case 'status':
+          	log='status:'+ret.status;
+          	break;
+          case 'tags':
+          	log='tags:'+ret.action;
+          	break;
+          case 'queryTag':
+          	log='queryTag:'+ret.aTags;
+          	break;
+          case 'alias':
+          	log='alias:'+ret.action;
+          	break;
       }
     }
 ```
@@ -148,6 +170,7 @@ ret：
 	description:"error description"         //错误描述
 	type:"occurError"                       //occurError 类型
 }
+
 ```
 
 err：
@@ -480,7 +503,7 @@ uzgetuisdk.stopService(function(ret) {
 
 （暂无）
 
-##可用性
+## 可用性
 
 Android系统
 
@@ -675,6 +698,56 @@ version > 1.1.9
 	<div><a href="#c6"> sendMessage </a></div>
 	<div><a href="#c7"> payloadMessage </a></div>
 </div>
+# runBackgroundOn
+
+允许SDK 后台运行
+
+## 示例代码
+
+```js
+var uzgetuisdk = api.require('pushGeTui');
+uzgetuisdk.runBackgroundOn(function(ret) {
+	api.alert({msg:"runBackgroundOn result:" + ret.result});
+});
+```
+
+
+
+# runBackgroundOff
+
+不允许SDK 后台运行
+
+## 示例代码
+
+```js
+var uzgetuisdk = api.require('pushGeTui');
+uzgetuisdk.runBackgroundOff(function(ret) {
+	api.alert({msg:"runBackgroundOff result:" + ret.result});
+});
+```
+
+# lbsLocationOn
+
+地理围栏功能，设置地理围栏运行
+
+```js
+var uzgetuisdk = api.require('pushGeTui');
+uzgetuisdk.lbsLocationOn(function(ret) {
+	api.alert({msg:"lbsLocationOn result:" + ret.result});
+});
+```
+
+# lbsLocationOff
+
+地理围栏功能，设置地理围栏不运行
+
+```js
+var uzgetuisdk = api.require('pushGeTui');
+uzgetuisdk.lbsLocationOff(function(ret) {
+	api.alert({msg:"lbsLocationOff result:" + ret.result});
+});
+```
+
 
 
 # **turnOnPush**<div id="c1"></div>

@@ -12,6 +12,7 @@ typedef enum {
     UnBindAlias,
     RegiserDeviceToken,
     SetBadge,
+    SetChannelId,
 } commonApiType;
 @implementation UZModuleGetuiSDK
 
@@ -98,6 +99,13 @@ typedef enum {
                 [GeTuiSdk setBadge:badge];
                 result = 1;
             } break;
+            case SetChannelId: {
+                NSString *channelId = [paramDict stringValueForKey:@"channelId" defaultValue:nil];
+                if (channelId != nil) {
+                    [GeTuiSdk setChannelId:channelId];
+                    result = 1;
+                }
+            } break;;
         }
     }
     @catch (NSException *exception) {
@@ -120,6 +128,8 @@ typedef enum {
     cbId = [self fetchCbId:paramDict];
     [GeTuiSdk startSdkWithAppId:_appID appKey:_appKey appSecret:_appSecret delegate:self];
     self.isPushTurnOn = YES;
+    self.isBackgroundEnable = NO;
+    self.islbsLocationEnable = NO;
     [self registerRemoteNotification];
 }
 
@@ -141,6 +151,10 @@ typedef enum {
 
 - (void)unBindAlias:(NSDictionary *)paramDict {
     [self commonApiWithBool:UnBindAlias cbId:paramDict];
+}
+
+- (void)setChannelId:(NSDictionary *)paramDict {
+    [self commonApiWithBool:SetChannelId cbId:paramDict];
 }
 
 - (void)fetchClientId:(NSDictionary *)paramDict {
@@ -244,7 +258,42 @@ typedef enum {
         [self sendResultEventWithCallbackId:cbIdTmp dataDict:ret errDict:nil doDelete:YES];
     }
 }
-
+- (void)runBackgroundOn:(NSDictionary *)paramDict {
+    NSInteger cbIdTmp = [self fetchCbId:paramDict];
+    if (cbIdTmp > -1) {
+        [GeTuiSdk runBackgroundEnable:YES];
+        self.isBackgroundEnable = YES;
+        NSDictionary *ret = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:1], @"result", nil];
+        [self sendResultEventWithCallbackId:cbIdTmp dataDict:ret errDict:nil doDelete:YES];
+    }
+}
+- (void)runBackgroundOff:(NSDictionary *)paramDict {
+    NSInteger cbIdTmp = [self fetchCbId:paramDict];
+    if (cbIdTmp > -1) {
+        [GeTuiSdk runBackgroundEnable:NO];
+        self.isBackgroundEnable = NO;
+        NSDictionary *ret = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:1], @"result", nil];
+        [self sendResultEventWithCallbackId:cbIdTmp dataDict:ret errDict:nil doDelete:YES];
+    }
+}
+- (void)lbsLocationOn:(NSDictionary *)paramDict {
+    NSInteger cbIdTmp = [self fetchCbId:paramDict];
+    if (cbIdTmp > -1) {
+        [GeTuiSdk lbsLocationEnable:YES andUserVerify:NO];
+        self.islbsLocationEnable = YES;
+        NSDictionary *ret = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:1], @"result", nil];
+        [self sendResultEventWithCallbackId:cbIdTmp dataDict:ret errDict:nil doDelete:YES];
+    }
+}
+- (void)lbsLocationOff:(NSDictionary *)paramDict {
+    NSInteger cbIdTmp = [self fetchCbId:paramDict];
+    if (cbIdTmp > -1) {
+        [GeTuiSdk lbsLocationEnable:NO andUserVerify:NO];
+        self.islbsLocationEnable = NO;
+        NSDictionary *ret = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:1], @"result", nil];
+        [self sendResultEventWithCallbackId:cbIdTmp dataDict:ret errDict:nil doDelete:YES];
+    }
+}
 - (void)setSilentTime:(NSDictionary *)paramDict {
     NSInteger cbIdTmp = [self fetchCbId:paramDict];
     if (cbIdTmp > -1) {
@@ -304,6 +353,52 @@ typedef enum {
     }
 }
 
+- (void)GeTuiSDkDidNotifySdkState:(SdkStatus)aStatus {
+    if (cbId > -1) {
+        NSDictionary *ret = [NSDictionary dictionaryWithObjectsAndKeys:
+                             [NSNumber numberWithInteger:1], @"result",
+                             @"status", @"type",
+                             [NSNumber numberWithUnsignedInteger:aStatus], @"status", nil];
+        [self sendResultEventWithCallbackId:cbId dataDict:ret errDict:nil doDelete:NO];
+    }
+}
+- (void)GeTuiSdkDidAliasAction:(NSString *)action result:(BOOL)isSuccess sequenceNum:(NSString *)aSn error:(NSError *)aError {
+    if (cbId > -1) {
+        
+        NSDictionary *ret = [NSDictionary dictionaryWithObjectsAndKeys:
+                             [NSNumber numberWithInteger:1], @"result",
+                             @"alias", @"type",
+                             action, @"action",
+                             aSn,@"aSn",
+                             isSuccess ? @"true" : @"false", @"isSuccess",
+                             aError.localizedDescription, @"error", nil];
+        [self sendResultEventWithCallbackId:cbId dataDict:ret errDict:nil doDelete:NO];
+    }
+}
+
+- (void)GeTuiSdkDidSetTagsAction:(NSString *)sequenceNum result:(BOOL)isSuccess error:(NSError *)aError {
+    if (cbId > -1) {
+        NSDictionary *ret = [NSDictionary dictionaryWithObjectsAndKeys:
+                             [NSNumber numberWithInteger:1], @"result",
+                             @"tags", @"type",
+                             sequenceNum, @"sequenceNum",
+                             isSuccess ? @"true" : @"false", @"isSuccess",
+                             aError.localizedDescription, @"error", nil];
+        [self sendResultEventWithCallbackId:cbId dataDict:ret errDict:nil doDelete:NO];
+    }
+}
+
+- (void)GetuiSdkDidQueryTag:(NSArray*)aTags sequenceNum:(NSString *)aSn error:(NSError *)aError {
+    if (cbId > -1) {
+        NSDictionary *ret = [NSDictionary dictionaryWithObjectsAndKeys:
+                             [NSNumber numberWithInteger:1], @"result",
+                             @"queryTag", @"type",
+                             aTags, @"aTags",
+                             aSn, @"aSn",
+                             aError.localizedDescription, @"error", nil];
+        [self sendResultEventWithCallbackId:cbId dataDict:ret errDict:nil doDelete:NO];
+    }
+}
 - (void)GeTuiSdkDidOccurError:(NSError *)error {
     // [EXT]:个推错误报告，集成步骤发生的任何错误都在这里通知，如果集成后，无法正常收到消息，查看这里的通知。
     //[_viewController logMsg:[NSString stringWithFormat:@">>>[GexinSdk error]:%@", [error localizedDescription]]];
@@ -417,9 +512,10 @@ typedef enum {
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     // [3]:向个推服务器注册deviceToken
     [GeTuiSdk registerDeviceTokenData:deviceToken];
-    NSLog(@"\n>>>[DeviceToken Success]:%@\n\n", deviceToken);
+    
     
     _deviceToken = [self getHexStringForData:deviceToken];
+    NSLog(@"\n>>>[DeviceToken Success]:data:%@\n\n string:%@\n\n", deviceToken, _deviceToken);
 }
 
 /** 远程通知注册失败委托 */

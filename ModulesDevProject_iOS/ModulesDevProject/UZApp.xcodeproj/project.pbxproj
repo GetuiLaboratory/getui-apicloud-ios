@@ -484,10 +484,10 @@
 		6BD3AFA32329F7BA003561F5 /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
+				6BD3AFA72329F7BA003561F5 /* libAMR.a */,
 				6BD3AFA42329F7BA003561F5 /* libminizip.a */,
 				6BD3AFA52329F7BA003561F5 /* libopencore-amrwb.a */,
 				6BD3AFA62329F7BA003561F5 /* libopencore-amrnb.a */,
-				6BD3AFA72329F7BA003561F5 /* libAMR.a */,
 			);
 			path = Dependencies;
 			sourceTree = "<group>";

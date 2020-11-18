@@ -25,6 +25,8 @@
 @property (assign, nonatomic) int lastPayloadIndex;
 @property (retain, nonatomic) NSString *payloadId;
 @property (assign, nonatomic) BOOL isPushTurnOn;
+@property (assign, nonatomic) BOOL isBackgroundEnable;
+@property (assign, nonatomic) BOOL islbsLocationEnable;
 
 
 @end
