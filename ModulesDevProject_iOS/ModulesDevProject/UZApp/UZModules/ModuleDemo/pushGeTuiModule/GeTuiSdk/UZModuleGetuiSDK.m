@@ -5,15 +5,40 @@
 #import "UZAppUtils.h"
 #import "UZModuleGetuiSDK.h"
 #import <UserNotifications/UserNotifications.h>
+#import "GeTuiSdk.h"
+#import <PushKit/PushKit.h>
 
 typedef enum {
     SetTags,
     BindAlias,
     UnBindAlias,
-    RegiserDeviceToken,
     SetBadge,
     SetChannelId,
 } commonApiType;
+
+@interface UZModuleGetuiSDK ()<GeTuiSdkDelegate, PKPushRegistryDelegate, UIApplicationDelegate>
+{
+    NSInteger cbId;
+    NSInteger voipCBId;
+}
+
+@property (copy, nonatomic) NSString *appKey;
+@property (copy, nonatomic) NSString *appSecret;
+@property (copy, nonatomic) NSString *appID;
+@property (copy, nonatomic) NSString *clientId;
+@property (assign, nonatomic) SdkStatus sdkStatus;
+@property (nonatomic,copy) NSString *deviceToken;
+
+@property (assign, nonatomic) int lastPayloadIndex;
+@property (copy, nonatomic) NSString *payloadId;
+@property (assign, nonatomic) BOOL isPushTurnOn;
+@property (assign, nonatomic) BOOL isBackgroundEnable;
+@property (assign, nonatomic) BOOL islbsLocationEnable;
+@property (assign, nonatomic) BOOL activeShowNotification;
+@property (nullable, class, nonatomic) NSDictionary *launchOptions;
+
+@end
+
 @implementation UZModuleGetuiSDK
 
 @synthesize appKey = _appKey;
@@ -23,8 +48,9 @@ typedef enum {
 @synthesize lastPayloadIndex = _lastPaylodIndex;
 @synthesize payloadId = _payloadId;
 
-+ (void)launch {
-    //在module.json里面配置的launchClassMethod，必须为类方法，引擎会在应用启动时调用配置的方法，模块可以在其中做一些初始化操作
++ (void)onAppLaunch:(NSDictionary *)launchOptions {
+    // 方法在应用启动时被调用
+    self.launchOptions = launchOptions;
 }
 
 - (id)initWithUZWebView:(UZWebView *)webView_ {
@@ -35,13 +61,6 @@ typedef enum {
 }
 
 - (void)dispose {
-    //do clean
-    //    if(_getuiPusher){
-    //        [_getuiPusher destroy];
-    //        _sdkStatus=SdkStatusStoped;
-    //        //cbId=-1;
-    //    }
-    
     [GeTuiSdk destroy];
     
     [theApp removeAppHandle:self];
@@ -51,6 +70,17 @@ typedef enum {
 
 - (SdkStatus)sdkStatus {
     return [GeTuiSdk status];
+}
+
+static NSDictionary *_gtStaticLaunchOptions;
++ (NSDictionary *)launchOptions
+{
+    return _gtStaticLaunchOptions;
+}
+
++ (void)setLaunchOptions:(NSDictionary *)launchOptions
+{
+    _gtStaticLaunchOptions = launchOptions;
 }
 
 #pragma mark - private method
@@ -87,13 +117,6 @@ typedef enum {
                     result = 1;
                 }
             } break;
-            case RegiserDeviceToken: {
-                NSString *token = [paramDict stringValueForKey:@"deviceToken" defaultValue:nil];
-                if (token != nil || !_deviceToken) {
-                    [GeTuiSdk registerDeviceToken:token ? token : _deviceToken];
-                    result = 1;
-                }
-            } break;
             case SetBadge: {
                 NSInteger badge = [paramDict integerValueForKey:@"badge" defaultValue:0];
                 [GeTuiSdk setBadge:badge];
@@ -124,17 +147,22 @@ typedef enum {
     self.appID = [feature stringValueForKey:@"ios_appid" defaultValue:nil];
     self.appKey = [feature stringValueForKey:@"ios_appkey" defaultValue:nil];
     self.appSecret = [feature stringValueForKey:@"ios_appsecret" defaultValue:nil];
+    self.activeShowNotification = [feature stringValueForKey:@"active_show_notification" defaultValue:@"0"].boolValue;
     _clientId = nil;
     cbId = [self fetchCbId:paramDict];
-    [GeTuiSdk startSdkWithAppId:_appID appKey:_appKey appSecret:_appSecret delegate:self];
+
+    [GeTuiSdk startSdkWithAppId:_appID appKey:_appKey appSecret:_appSecret delegate:self launchingOptions:self.class.launchOptions];
+    self.class.launchOptions = nil;
     self.isPushTurnOn = YES;
     self.isBackgroundEnable = NO;
     self.islbsLocationEnable = NO;
     [self registerRemoteNotification];
 }
 
-- (void)registerDeviceToken:(NSDictionary *)paramDict {
-    [self commonApiWithBool:RegiserDeviceToken cbId:paramDict];
+/** 注册远程通知 */
+- (void)registerRemoteNotification {
+    // [ 参考代码，开发者注意根据实际需求自行修改 ] 注册远程通知
+    [GeTuiSdk registerRemoteNotification: (UNAuthorizationOptionSound | UNAuthorizationOptionAlert | UNAuthorizationOptionBadge)];
 }
 
 - (void)setTag:(NSDictionary *)paramDict {
@@ -310,8 +338,17 @@ typedef enum {
     }
 }
 
+- (void)clearAllNotificationForNotificationBar:(NSDictionary *)paramDict {
+    NSInteger cbIdTmp = [self fetchCbId:paramDict];
+    if (cbIdTmp > -1) {
+        [GeTuiSdk clearAllNotificationForNotificationBar];
+        NSDictionary *ret = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:1], @"result", nil];
+        [self sendResultEventWithCallbackId:cbIdTmp dataDict:ret errDict:nil doDelete:YES];
+    }
+}
+
 // 个推sdk接口回调
-#pragma mark - GexinSdkDelegate
+#pragma mark - GtSdkDelegate
 
 - (void)GeTuiSdkDidRegisterClient:(NSString *)clientId {
     self.clientId = clientId;
@@ -324,32 +361,14 @@ typedef enum {
     }
 }
 
-- (void)GeTuiSdkDidReceivePayloadData:(NSData *)payloadData andTaskId:(NSString *)taskId andMsgId:(NSString *)msgId andOffLine:(BOOL)offLine fromGtAppId:(NSString *)appId {
-    
-    NSString *payloadMsg = nil;
-    if (payloadData) {
-        payloadMsg = [[NSString alloc] initWithData:payloadData encoding:NSUTF8StringEncoding];
-    }
-    if (cbId > -1) {
-        NSDictionary *ret = [NSDictionary dictionaryWithObjectsAndKeys:
-                             [NSNumber numberWithInteger:1], @"result",
-                             @"payload", @"type",
-                             taskId, @"taskId",
-                             msgId, @"messageId",
-                             offLine ? @"true" : @"false", @"offLine",
-                             payloadMsg, @"payload", nil];
-        [self sendResultEventWithCallbackId:cbId dataDict:ret errDict:nil doDelete:NO];
-    }
-}
-
-- (void)GeTuiSdkDidSendMessage:(NSString *)messageId result:(int)result {
+- (void)GeTuiSdkDidSendMessage:(NSString *)messageId result:(BOOL)isSuccess error:(nullable NSError *)aError {
     // [4-EXT]:发送上行消息结果反馈
     //NSString *record = [NSString stringWithFormat:@"Received sendmessage:%@ result:%d", messageId, result];
     if (cbId > -1) {
-        NSDictionary *ret = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:result], @"result",
+        NSDictionary *ret = [NSDictionary dictionaryWithObjectsAndKeys:@(isSuccess), @"result",
                              messageId, @"messageId",
                              @"sendMsgFeedback", @"type", nil];
-        [self sendResultEventWithCallbackId:cbId dataDict:ret errDict:nil doDelete:NO];
+        [self sendResultEventWithCallbackId:cbId dataDict:ret errDict:aError.userInfo doDelete:NO];
     }
 }
 
@@ -410,90 +429,39 @@ typedef enum {
     }
 }
 
-#pragma mark - 用户通知(推送) _自定义方法
+#pragma mark 通知回调
 
-/** 注册远程通知 */
-- (void)registerRemoteNotification {
-    /*
-     警告：Xcode8的需要手动开启“TARGETS -> Capabilities -> Push Notifications”
-     */
-    
-    /*
-     警告：该方法需要开发者自定义，以下代码根据APP支持的iOS系统不同，代码可以对应修改。
-     以下为演示代码，注意根据实际需要修改，注意测试支持的iOS系统都能获取到DeviceToken
-     */
-    if ([[UIDevice currentDevice].systemVersion floatValue] >= 10.0) {
-#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_10_0 // Xcode 8编译会调用
-        UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
-        center.delegate = self;
-        [center requestAuthorizationWithOptions:(UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert | UNAuthorizationOptionCarPlay) completionHandler:^(BOOL granted, NSError *_Nullable error) {
-            if (!error) {
-                NSLog(@"request authorization succeeded!");
-            }
-        }];
-        
-        [[UIApplication sharedApplication] registerForRemoteNotifications];
-#else // Xcode 7编译会调用
-        UIUserNotificationType types = (UIUserNotificationTypeAlert | UIUserNotificationTypeSound | UIUserNotificationTypeBadge);
-        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
-        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
-        [[UIApplication sharedApplication] registerForRemoteNotifications];
-#endif
-    } else if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
-        UIUserNotificationType types = (UIUserNotificationTypeAlert | UIUserNotificationTypeSound | UIUserNotificationTypeBadge);
-        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
-        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
-        [[UIApplication sharedApplication] registerForRemoteNotifications];
-    } else {
-        UIRemoteNotificationType apn_type = (UIRemoteNotificationType)(UIRemoteNotificationTypeAlert |
-                                                                       UIRemoteNotificationTypeSound |
-                                                                       UIRemoteNotificationTypeBadge);
-        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:apn_type];
-    }
-}
-
-#pragma mark - iOS 10中收到推送消息
-
-#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_10_0
-
-//  iOS 10: App在前台获取到通知
-- (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler {
+/// 通知展示（iOS10及以上版本）
+/// @param center center
+/// @param notification notification
+/// @param completionHandler completionHandler
+- (void)GeTuiSdkNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification completionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler {
     
     NSLog(@"willPresentNotification：%@", notification.request.content.userInfo);
     
-    // 根据APP需要，判断是否要提示用户Badge、Sound、Alert
-    completionHandler(UNNotificationPresentationOptionBadge | UNNotificationPresentationOptionSound | UNNotificationPresentationOptionAlert);
-}
-
-//  iOS 10: 点击通知进入App时触发
-- (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler {
-    
-    NSLog(@"didReceiveNotification：%@", response.notification.request.content.userInfo);
-    
-    // [ GTSdk ]：将收到的APNs信息传给个推统计
-    [GeTuiSdk handleRemoteNotification:response.notification.request.content.userInfo];
     if (cbId > -1) {
         NSDictionary *ret = [NSDictionary dictionaryWithObjectsAndKeys:
                              [NSNumber numberWithInteger:1], @"result",
-                             @"apns", @"type",
-                             response.notification.request.content.userInfo, @"msg", nil];
+                             @"willPresentNotification", @"type",
+                             notification.request.content.userInfo, @"msg", nil];
         [self sendResultEventWithCallbackId:cbId dataDict:ret errDict:nil doDelete:NO];
     }
-    completionHandler();
+    
+    
+    // 根据APP需要，判断是否要提示用户Badge、Sound、Alert
+    if (self.activeShowNotification) {
+        completionHandler(UNNotificationPresentationOptionBadge | UNNotificationPresentationOptionSound | UNNotificationPresentationOptionAlert);
+    }else {
+        completionHandler(UNNotificationPresentationOptionNone);
+    }
 }
 
-#endif
-
-#pragma mark - APP运行中接收到通知(推送)处理 - iOS 10以下版本收到推送
-
-/** APP已经接收到“远程”通知(推送) - (App运行在后台/App运行在前台)  */
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler {
-    
-    // [ GTSdk ]：将收到的APNs信息传给个推统计
-    [GeTuiSdk handleRemoteNotification:userInfo];
-    
-    // 显示APNs信息到页面
-    //    NSString *record = [NSString stringWithFormat:@"[APN]%@, %@", [NSDate date], userInfo];
+/// 收到通知信息
+/// @param userInfo apns通知内容
+/// @param center UNUserNotificationCenter（iOS10及以上版本）
+/// @param response UNNotificationResponse（iOS10及以上版本）
+/// @param completionHandler 用来在后台状态下进行操作（iOS10以下版本）
+- (void)GeTuiSdkDidReceiveNotification:(NSDictionary *)userInfo notificationCenter:(UNUserNotificationCenter *)center response:(UNNotificationResponse *)response fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     if (cbId > -1) {
         NSDictionary *ret = [NSDictionary dictionaryWithObjectsAndKeys:
                              [NSNumber numberWithInteger:1], @"result",
@@ -501,17 +469,51 @@ typedef enum {
                              userInfo, @"msg", nil];
         [self sendResultEventWithCallbackId:cbId dataDict:ret errDict:nil doDelete:NO];
     }
-    completionHandler(UIBackgroundFetchResultNewData);
+    completionHandler(UNNotificationPresentationOptionBadge | UNNotificationPresentationOptionSound | UNNotificationPresentationOptionAlert);
+}
+
+/// 收到透传消息
+/// @param userInfo    推送消息内容
+/// @param fromGetui   YES: 个推通道  NO：苹果apns通道
+/// @param offLine     是否是离线消息，YES.是离线消息
+/// @param appId       应用的appId
+/// @param taskId      推送消息的任务id
+/// @param msgId       推送消息的messageid
+/// @param completionHandler 用来在后台状态下进行操作（通过苹果apns通道的消息 才有此参数值）
+- (void)GeTuiSdkDidReceiveSlience:(NSDictionary *)userInfo fromGetui:(BOOL)fromGetui offLine:(BOOL)offLine appId:(NSString *)appId taskId:(NSString *)taskId msgId:(NSString *)msgId fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    if (cbId > -1) {
+        NSDictionary *ret = [NSDictionary dictionaryWithObjectsAndKeys:
+                             [NSNumber numberWithInteger:1], @"result",
+                             @"payload", @"type",
+                             taskId, @"taskId",
+                             msgId, @"messageId",
+                             offLine ? @"true" : @"false", @"offLine",
+                             userInfo[@"payload"] ? :@"", @"payload", nil];
+        [self sendResultEventWithCallbackId:cbId dataDict:ret errDict:nil doDelete:NO];
+    }
+    if(completionHandler) {
+        completionHandler(UIBackgroundFetchResultNoData);
+    }
+}
+
+- (void)GeTuiSdkNotificationCenter:(UNUserNotificationCenter *)center
+       openSettingsForNotification:(nullable UNNotification *)notification {
+    if (cbId > -1) {
+        NSDictionary *ret = [NSDictionary dictionaryWithObjectsAndKeys:
+                             [NSNumber numberWithInteger:1], @"result",
+                             @"openSettings", @"type",nil];
+        [self sendResultEventWithCallbackId:cbId dataDict:ret errDict:nil doDelete:NO];
+    }
 }
 
 
-#pragma mark - 注册DeviceToken
 #pragma mark - 远程通知(推送)回调--注册DeviceToken
 
 /** 远程通知注册成功委托 */
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-    // [3]:向个推服务器注册deviceToken
-    [GeTuiSdk registerDeviceTokenData:deviceToken];
+    // [ GTSDK ]：向个推服务器注册deviceToken
+    // 2.5.2.0 之前版本需要调用：
+    //[GeTuiSdk registerDeviceTokenData:deviceToken];
     
     
     _deviceToken = [self getHexStringForData:deviceToken];
@@ -566,7 +568,7 @@ typedef enum {
 
 #pragma mark - applink
 
-- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray *))restorationHandler {
+- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void(^)(NSArray<id<UIUserActivityRestoring>> * __nullable restorableObjects))restorationHandler {
     if ([userActivity.activityType isEqualToString:NSUserActivityTypeBrowsingWeb]) {
         NSURL* webUrl = userActivity.webpageURL;
         

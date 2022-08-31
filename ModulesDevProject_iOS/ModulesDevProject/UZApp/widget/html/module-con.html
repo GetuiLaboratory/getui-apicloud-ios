@@ -27,7 +27,6 @@
                 <input class="featureList" type="button" value="bindAlias" onclick="bindAlias()"/>
                 <input class="featureList" type="button" value="unBindAlias" onclick="unBindAlias()"/>
                 <input class="featureList"  type="button" value="sendMsg" onclick="sendMsg()"/>
-                <input class="featureList" type="button" value="registerDeviceToken" onclick="registerDeviceToken()"/>
                 <input class="featureList" type="button" value="fetchClientId" onclick="fetchClientId()"/>
                 <input class="featureList"  type="button" value="getVersion" onclick="getVersion()"/>
                 <input class="featureList"  type="button" value="isPushTurnedOn" onclick="isPushTurnedOn()"/>
@@ -70,21 +69,26 @@
       var log;
       switch(ret.type)
       {
-          
           case 'cid':
           log='cid:'+ret.cid;
           break;
           case 'payload':
           log='payload:'+ret.payload;
           break;
+          case 'apns':
+          log='apns click:'+ret.result+' msg:'+ret.msg;
+          break;
+          case 'willPresentNotification':
+          log='willPresentNotification:'+ret.result+' msg:'+ret.msg;
+          break;
+          case 'openSettings':
+          log='openSettingsForNotification:';
+          break;
           case'occurError':
           log='occurError';
           break;
           case 'sendMsgFeedback':
           log='sendMsgFeedback:'+ret.result+' messageid:'+ret.messageId;
-          break;
-          case 'apns':
-          log='apns click:'+ret.result+' msg:'+ret.msg;
           break;
           case 'AppLinkPayload':
           log='applink:'+ret.result+' msg:'+ret.payload;
@@ -126,7 +130,7 @@
     };
     function bindAlias(){
         var param={
-            alias:'newAlias',
+            alias:'hello',
         };
         push.bindAlias(param,function(ret,err){
                        alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err));
@@ -143,16 +147,6 @@
                          var log='unBindAlias:'+ret.result;
                          printfLog(log);
                          });
-    }
-    function registerDeviceToken(){
-        var param={
-            deviceToken:api.deviceToken,
-        };
-        push.registerDeviceToken(param,function(ret,err){
-                                 alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err));
-                                 var log='registerDeviceToken:'+ret.result;
-                                 printfLog(log);
-                                 });
     }
     function fetchClientId(){
         push.fetchClientId(function(ret,err){
