@@ -82,32 +82,62 @@ APPKEY/APPID：从个推平台上的获得的应用标识
 		2.android_appid：应用ID，通过个推平台获得
 		3.android_appsecret：通过个推平台获得
 		4.android_groupid: 目前留空即可
+        5.active_show_notification iOS平台前台收到通知是否展示
+        6.ios_appsecret：通过个推平台获得
+        7.ios_appid：应用ID，通过个推平台获得
+        8.ios_appkey：通过个推平台获得      
 
 ***接口设计说明***
 一、cid、payload、occurError都使用通过initialize传递进去的callback，所有的回调里面都定义了一个type参数，我们可以通过判断type参数来判断回调的类型.
 type类型参数说明：
         1、cid:初始化（initialize）回调回来的cid；
-        2、payload：下发payload消息；
-        3、apns: 苹果官方 APNs 推送，即应用在后台时收到的推送消息，若通过点击该推送消息打开应用，则收到该类型的回调，可用于判断是否点击推送消息打开应用；
-        4、occurError：所有发生错误时候的回调；
+
+​        2、payload：下发payload消息；
+
+​        3、occurError：所有发生错误时候的回调；
+
+​        4、status：SDK运行状态通知
+
+​        5、tags：设置标签回调
+
+​        6、queryTag：查询当前绑定tag结果返回
+
+​        7、alias：SDK绑定、解绑回调
+​         
+​        8、apns: 苹果官方 APNs 推送，即应用在后台时收到的推送消息，若通过点击该推送消息打开应用，则收到该类型的回调，可用于判断是否点击推送消息打开应用；   
 
 二、返回值result值说明：
         1、0：失败
         2、1：成功
         3、-100：不支持的接口   
 ```js
-function callback(ret, err){
+function callback(ret,err){
       var log;
       switch(ret.type)
       {
           case 'cid':
-          log='cid:'+ret.cid;
+            log='cid:'+ret.cid;
           break;
           case 'payload':
-          log='payload:'+ret.payload;
+            log='payload:'+ret.payload;
           break;
-          case 'occurError':
-          log='occurError';
+          case 'apns':
+            log='apns click:'+ret.result+' msg:'+ret.msg;
+          break;
+          case 'willPresentNotification':
+            log='willPresentNotification:'+ret.result+' msg:'+ret.msg;
+          break;
+          case 'openSettings':
+            log='openSettingsForNotification:';
+          break;
+          case'occurError':
+            log='occurError';
+          break;
+          case 'sendMsgFeedback':
+            log='sendMsgFeedback:'+ret.result+' messageid:'+ret.messageId;
+          break;
+          case 'AppLinkPayload':
+            log='applink:'+ret.result+' msg:'+ret.payload;
           break;
       }
     }

@@ -70,6 +70,10 @@ APPKEY/APPID：从个推平台上的获得的应用标识
 		2.android_appid：应用ID，通过个推平台获得
 		3.android_appsecret：通过个推平台获得
 		4.android_groupid: 目前留空即可
+        5.active_show_notification iOS平台前台收到通知是否展示
+        6.ios_appsecret：通过个推平台获得
+        7.ios_appid：应用ID，通过个推平台获得
+        8.ios_appkey：通过个推平台获得
 
 ***接口设计说明***
 一、cid、payload、occurError都使用通过initialize传递进去的callback，所有的回调里面都定义了一个type参数，我们可以通过判断type参数来判断回调的类型.
@@ -87,6 +91,8 @@ type类型参数说明：
 ​		6、queryTag：查询当前绑定tag结果返回
 
 ​		7、alias：SDK绑定、解绑回调
+​         
+​        8、apns: 苹果官方 APNs 推送，即应用在后台时收到的推送消息，若通过点击该推送消息打开应用，则收到该类型的回调，可用于判断是否点击推送消息打开应用；      
 
 二、返回值result值说明：
         1、0：失败
@@ -98,26 +104,29 @@ function callback(ret,err){
       switch(ret.type)
       {
           case 'cid':
-          	log='cid:'+ret.cid;
-          	break;
+            log='cid:'+ret.cid;
+          break;
           case 'payload':
-          	log='payload:'+ret.payload;
-          	break;
+            log='payload:'+ret.payload;
+          break;
+          case 'apns':
+            log='apns click:'+ret.result+' msg:'+ret.msg;
+          break;
+          case 'willPresentNotification':
+            log='willPresentNotification:'+ret.result+' msg:'+ret.msg;
+          break;
+          case 'openSettings':
+            log='openSettingsForNotification:';
+          break;
           case'occurError':
-          	log='occurError';
-          	break;
-	       	case 'status':
-          	log='status:'+ret.status;
-          	break;
-          case 'tags':
-          	log='tags:'+ret.action;
-          	break;
-          case 'queryTag':
-          	log='queryTag:'+ret.aTags;
-          	break;
-          case 'alias':
-          	log='alias:'+ret.action;
-          	break;
+            log='occurError';
+          break;
+          case 'sendMsgFeedback':
+            log='sendMsgFeedback:'+ret.result+' messageid:'+ret.messageId;
+          break;
+          case 'AppLinkPayload':
+            log='applink:'+ret.result+' msg:'+ret.payload;
+          break;
       }
     }
 ```
