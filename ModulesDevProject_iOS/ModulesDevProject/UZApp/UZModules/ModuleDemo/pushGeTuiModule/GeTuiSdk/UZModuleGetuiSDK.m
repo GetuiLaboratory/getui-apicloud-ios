@@ -12,6 +12,7 @@ typedef enum {
     SetTags,
     BindAlias,
     UnBindAlias,
+    RegiserDeviceToken,
     SetBadge,
     SetChannelId,
 } commonApiType;
@@ -114,6 +115,14 @@ static NSDictionary *_gtStaticLaunchOptions;
                 NSString *alias = [paramDict stringValueForKey:@"alias" defaultValue:nil];
                 if (alias != nil) {
                     [GeTuiSdk unbindAlias:alias andSequenceNum:@"sn" andIsSelf:YES];
+                    result = 1;
+                }
+            } break;
+            case RegiserDeviceToken: {
+                NSString *token = [paramDict stringValueForKey:@"deviceToken" defaultValue:nil];
+                if (token != nil || !_deviceToken) {
+                    // 2.5.2.0 之前版本需要调用： 现版本自动注册
+                    [GeTuiSdk registerDeviceToken:token ? token : _deviceToken];
                     result = 1;
                 }
             } break;
@@ -336,6 +345,10 @@ static NSDictionary *_gtStaticLaunchOptions;
         NSDictionary *ret = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:-100], @"result", nil];
         [self sendResultEventWithCallbackId:cbIdTmp dataDict:ret errDict:nil doDelete:YES];
     }
+}
+
+- (void)registerDeviceToken:(NSDictionary *)paramDict {
+    [self commonApiWithBool:RegiserDeviceToken cbId:paramDict];
 }
 
 - (void)clearAllNotificationForNotificationBar:(NSDictionary *)paramDict {
