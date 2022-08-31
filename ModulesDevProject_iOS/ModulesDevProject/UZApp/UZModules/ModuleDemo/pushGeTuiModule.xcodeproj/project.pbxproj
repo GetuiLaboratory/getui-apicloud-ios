@@ -1,0 +1,316 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A8BA92DE28BDE63F00C56C94 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8BA92DD28BDE63F00C56C94 /* Foundation.framework */; };
+		A8BA92E628BDE7FD00C56C94 /* UZModuleGetuiSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = A8BA92E428BDE7FD00C56C94 /* UZModuleGetuiSDK.m */; };
+		A8BA92E728BDE7FD00C56C94 /* GTSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8BA92E528BDE7FD00C56C94 /* GTSDK.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		528608261A596B0600587EC2 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		524B96AE1E165D4C00F0D05E /* UZURLTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UZURLTask.h; sourceTree = "<group>"; };
+		526024371CFDA1D7006F845D /* UIViewControllerExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewControllerExtension.h; sourceTree = "<group>"; };
+		528608281A596B0600587EC2 /* libpushGeTuiModule.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libpushGeTuiModule.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		528608431A596B6B00587EC2 /* UZAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UZAppDelegate.h; sourceTree = "<group>"; };
+		528608441A596B6B00587EC2 /* UZAppUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UZAppUtils.h; sourceTree = "<group>"; };
+		528608451A596B6B00587EC2 /* UZModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UZModule.h; sourceTree = "<group>"; };
+		52D5021F1ACB9F5300648655 /* NSDictionaryUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDictionaryUtils.h; sourceTree = "<group>"; };
+		A8BA92DD28BDE63F00C56C94 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		A8BA92E228BDE7FD00C56C94 /* UZModuleGetuiSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UZModuleGetuiSDK.h; sourceTree = "<group>"; };
+		A8BA92E328BDE7FD00C56C94 /* GeTuiSdk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeTuiSdk.h; sourceTree = "<group>"; };
+		A8BA92E428BDE7FD00C56C94 /* UZModuleGetuiSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UZModuleGetuiSDK.m; sourceTree = "<group>"; };
+		A8BA92E528BDE7FD00C56C94 /* GTSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = GTSDK.a; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		528608251A596B0600587EC2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A8BA92DE28BDE63F00C56C94 /* Foundation.framework in Frameworks */,
+				A8BA92E728BDE7FD00C56C94 /* GTSDK.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5286081F1A596B0600587EC2 = {
+			isa = PBXGroup;
+			children = (
+				5286082A1A596B0600587EC2 /* pushGeTuiModule */,
+				528608291A596B0600587EC2 /* Products */,
+				A8BA92DC28BDE63F00C56C94 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		528608291A596B0600587EC2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				528608281A596B0600587EC2 /* libpushGeTuiModule.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5286082A1A596B0600587EC2 /* pushGeTuiModule */ = {
+			isa = PBXGroup;
+			children = (
+				528608421A596B6B00587EC2 /* UZEngine */,
+				A8BA92E128BDE7FD00C56C94 /* GeTuiSdk */,
+			);
+			path = pushGeTuiModule;
+			sourceTree = "<group>";
+		};
+		528608421A596B6B00587EC2 /* UZEngine */ = {
+			isa = PBXGroup;
+			children = (
+				52D5021F1ACB9F5300648655 /* NSDictionaryUtils.h */,
+				526024371CFDA1D7006F845D /* UIViewControllerExtension.h */,
+				528608431A596B6B00587EC2 /* UZAppDelegate.h */,
+				528608441A596B6B00587EC2 /* UZAppUtils.h */,
+				528608451A596B6B00587EC2 /* UZModule.h */,
+				524B96AE1E165D4C00F0D05E /* UZURLTask.h */,
+			);
+			path = UZEngine;
+			sourceTree = "<group>";
+		};
+		A8BA92DC28BDE63F00C56C94 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A8BA92DD28BDE63F00C56C94 /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A8BA92E128BDE7FD00C56C94 /* GeTuiSdk */ = {
+			isa = PBXGroup;
+			children = (
+				A8BA92E328BDE7FD00C56C94 /* GeTuiSdk.h */,
+				A8BA92E528BDE7FD00C56C94 /* GTSDK.a */,
+				A8BA92E228BDE7FD00C56C94 /* UZModuleGetuiSDK.h */,
+				A8BA92E428BDE7FD00C56C94 /* UZModuleGetuiSDK.m */,
+			);
+			path = GeTuiSdk;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		528608271A596B0600587EC2 /* pushGeTuiModule */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5286083C1A596B0600587EC2 /* Build configuration list for PBXNativeTarget "pushGeTuiModule" */;
+			buildPhases = (
+				528608241A596B0600587EC2 /* Sources */,
+				528608251A596B0600587EC2 /* Frameworks */,
+				528608261A596B0600587EC2 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = pushGeTuiModule;
+			productName = ModuleDemo;
+			productReference = 528608281A596B0600587EC2 /* libpushGeTuiModule.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		528608201A596B0600587EC2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = APICloud;
+				TargetAttributes = {
+					528608271A596B0600587EC2 = {
+						CreatedOnToolsVersion = 6.1;
+					};
+				};
+			};
+			buildConfigurationList = 528608231A596B0600587EC2 /* Build configuration list for PBXProject "pushGeTuiModule" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5286081F1A596B0600587EC2;
+			productRefGroup = 528608291A596B0600587EC2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				528608271A596B0600587EC2 /* pushGeTuiModule */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		528608241A596B0600587EC2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A8BA92E628BDE7FD00C56C94 /* UZModuleGetuiSDK.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		5286083A1A596B0600587EC2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					"$(ARCHS_STANDARD)",
+					armv7s,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		5286083B1A596B0600587EC2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					"$(ARCHS_STANDARD)",
+					armv7s,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5286083D1A596B0600587EC2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/pushGeTuiModule",
+					"$(PROJECT_DIR)/pushGeTuiModule/GeTuiSdk",
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		5286083E1A596B0600587EC2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/pushGeTuiModule",
+					"$(PROJECT_DIR)/pushGeTuiModule/GeTuiSdk",
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		528608231A596B0600587EC2 /* Build configuration list for PBXProject "pushGeTuiModule" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5286083A1A596B0600587EC2 /* Debug */,
+				5286083B1A596B0600587EC2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5286083C1A596B0600587EC2 /* Build configuration list for PBXNativeTarget "pushGeTuiModule" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5286083D1A596B0600587EC2 /* Debug */,
+				5286083E1A596B0600587EC2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 528608201A596B0600587EC2 /* Project object */;
+}

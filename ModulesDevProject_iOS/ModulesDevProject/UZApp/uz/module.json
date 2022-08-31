@@ -1,9 +1,8 @@
- [
-  {
-  "name":"pushGeTui",
-  "class":"UZModuleGetuiSDK",
-  "methods":["initialize","registerDeviceToken","setTag","bindAlias","unBindAlias","fetchClientId","stopService","sendFeedbackMessage","turnOnPush","turnOffPush","isPushTurnedOn","getVersion","setSilentTime","sendMessage","payloadMessage","setBadge","voipRegistration","runBackgroundOn","runBackgroundOff","lbsLocationOn","lbsLocationOff"],
-  "launchClassMethod":"launch"
-  }
-  ]
-
+[
+ {
+ "name":"pushGeTui",
+ "class":"UZModuleGetuiSDK",
+ "methods":["initialize","registerDeviceToken","setTag","bindAlias","unBindAlias","fetchClientId","stopService","sendFeedbackMessage","turnOnPush","turnOffPush","isPushTurnedOn","getVersion","setSilentTime","sendMessage","payloadMessage","setBadge","voipRegistration","runBackgroundOn","runBackgroundOff","lbsLocationOn","lbsLocationOff"],
+ "launchClassMethod":"launch"
+ }
+]

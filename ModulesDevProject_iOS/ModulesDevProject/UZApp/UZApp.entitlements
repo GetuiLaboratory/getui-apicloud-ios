@@ -8,5 +8,7 @@
 	<array>
 		<string>applinks:link.applk.cn</string>
 	</array>
+	<key>com.apple.developer.networking.wifi-info</key>
+	<true/>
 </dict>
 </plist>
