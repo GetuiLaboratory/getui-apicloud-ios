@@ -525,9 +525,8 @@ static NSDictionary *_gtStaticLaunchOptions;
 /** 远程通知注册成功委托 */
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     // [ GTSDK ]：向个推服务器注册deviceToken
-    // 2.5.2.0 之前版本需要调用：
-    //[GeTuiSdk registerDeviceTokenData:deviceToken];
-    
+    // SDK内Hook失效 原因可能是平台在sdk注册前已申请通知权限
+    [GeTuiSdk registerDeviceTokenData:deviceToken];
     
     _deviceToken = [self getHexStringForData:deviceToken];
     NSLog(@"\n>>>[DeviceToken Success]:data:%@\n\n string:%@\n\n", deviceToken, _deviceToken);
