@@ -1,0 +1,2 @@
+AppDemo2024 集成apicloud插件市场的demo
+NativePluginDemo2024 集成本地自定义插件的demo（个推开发人员修改测试完成后，发布插件市场）

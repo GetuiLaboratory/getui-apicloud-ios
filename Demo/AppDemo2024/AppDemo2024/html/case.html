@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>case</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css" />
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+    <style>
+        .page {
+            height: 100%;
+            width: 100%;
+            background-color: #fff;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .nav-bar {
+            width: 100%;
+            height: 45px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 1px solid #ccc;
+            background-color: #fff;
+            text-align: center;
+        }
+
+        .nav-bar-text {
+            font-size: 20px;
+            color: #333;
+            text-align: center;
+        }
+
+        .case-item {
+            display: flex;
+            flex-direction: row;
+            height: 120px;
+            padding: 10px 15px;
+            box-sizing: border-box;
+        }
+
+        .case-item:active {
+            opacity: 0.8;
+        }
+
+        .case-item-img {
+            width: 100px;
+            height: 100px;
+            margin-right: 16px;
+            border: 1px solid #f1f1f1;
+            border-radius: 8px;
+        }
+
+        .item-title {
+            font-size: 14px;
+            font-weight: 500;
+            color: #333;
+            flex: 1;
+        }
+
+        .case-footer {
+            display: flex;
+            height: 44px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .case-loadDesc {
+            font-size: 12px;
+            color: #999;
+        }
+        .goodsList {
+            flex: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <div class="nav-bar">
+            <span class="nav-bar-text">案例</span>
+        </div>
+        <div class="scroll-view-y">
+            <div class="goodsList"></div>
+            <div class="case-footer">
+                <span class="case-loadDesc">没有更多啦</span>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+<script src="../script/api.js"></script>
+<script>
+    let goodsList = [
+        {
+            "title": "创业夫妻加盟66天，门店已经排起了长龙",
+            "cover_img":
+                "../images/linkImg/20a6218c83f5e7e940a07c9a1ff44c5e.png",
+            "creat_time": 1593768754
+        },
+        {
+            "id": "231dc560-dab9-11ea-90e2-ad9fabf4a7a9",
+            "title": "上海外滩加盟店，加盟数日火爆上海滩",
+            "cover_img":
+                "../images/linkImg/aae0244b645bcf2b0ea70dfde8da8e47.png",
+            "creat_time": 1597029928
+        },
+        {
+            "id": "47e72430-dace-11ea-90e2-ad9fabf4a7a9",
+            "title": "「茶事分享」一款红茶醉了心",
+            "cover_img":
+                "../images/linkImg/d6f008eb12663454510e42dbe3038e7b.png",
+            "creat_time": 1597039009
+        },
+        {
+            "id": "ef888080-dace-11ea-90e2-ad9fabf4a7a9",
+            "title": "北京五道口店火爆开业",
+            "cover_img":
+                "../images/linkImg/2f469dd46543e17ce03405ba98997922.png",
+            "creat_time": 1597039291
+        },
+        {
+            "id": "1fe92180-bd10-11ea-b835-0faeeada0334",
+            "title": "创业夫妻加盟66天，门店已经排起了长龙",
+            "cover_img":
+                "../images/linkImg/20a6218c83f5e7e940a07c9a1ff44c5e.png",
+            "creat_time": 1593768754
+        },
+        {
+            "id": "231dc560-dab9-11ea-90e2-ad9fabf4a7a9",
+            "title": "上海外滩加盟店，加盟数日火爆上海滩",
+            "cover_img":
+                "../images/linkImg/aae0244b645bcf2b0ea70dfde8da8e47.png",
+            "creat_time": 1597029928
+        },
+        {
+            "id": "47e72430-dace-11ea-90e2-ad9fabf4a7a9",
+            "title": "「茶事分享」一款红茶醉了心",
+            "cover_img":
+                "../images/linkImg/d6f008eb12663454510e42dbe3038e7b.png",
+            "creat_time": 1597039009
+        },
+        {
+            "id": "ef888080-dace-11ea-90e2-ad9fabf4a7a9",
+            "title": "北京五道口店火爆开业",
+            "cover_img":
+                "../images/linkImg/2f469dd46543e17ce03405ba98997922.png",
+            "creat_time": 1597039291
+        }]
+   
+    apiready = function () {
+        $api.fixStatusBar($api.dom('.nav-bar'));
+    }
+    getGoodsList()
+
+    function getGoodsList() {
+        
+        let str = '';
+        goodsList.forEach(item => {
+            str += `
+            <div class="case-item" onclick="onDetailClick()" data-id="${item.id}">
+                <img src="${item.cover_img}" class="case-item-img"/>
+                <span class="item-title">${item.title}</span>
+            </div>
+            `
+        })
+        document.querySelector('.goodsList').innerHTML = str;
+    }
+    
+    function onDetailClick() {
+        api.openWin({
+            name: 'detail',
+            url: './detail.html'
+        })
+    }
+
+</script>
+
+</html>

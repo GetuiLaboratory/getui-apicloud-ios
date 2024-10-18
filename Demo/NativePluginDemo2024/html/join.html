@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>join</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css" />
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+    <style>
+        .page {
+            height: 100%;
+            width: 100%;
+            background-color: #f8f8f8;
+            display: flex;
+            flex-direction: column;
+        }
+        ::-webkit-scrollbar {
+            display: none;
+        }
+
+        .bc-cover {
+            width: 100%;
+        }
+
+        .bc-cover img {
+            width: 100%;
+        }
+
+        .sort-list {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            padding: 27px 0 10px;
+            background-color: #fff;
+            border-radius: 15px 15px 0 0;
+            position: relative;
+            top: -14px;
+        }
+
+        .sl-cate-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 25%;
+            margin-bottom: 10px;
+        }
+
+        .sl-cate-img {
+            width: 50px;
+            height: 50px;
+        }
+
+        .sl-cate-word {
+            margin-top: 2px;
+            font-size: 12px;
+            color: #333;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .from {
+            padding: 10px 15px 27px;
+            background-color: #fff;
+            top: -4px;
+        }
+
+        .f-join-title {
+            color: #333;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .f-join-msg {
+            color: #999;
+            font-size: 12px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        .f-input-box {
+            padding: 15px 11px;
+            background: rgba(239, 239, 239, 0.7);
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .f-input {
+            width: 100%;
+            color: #333;
+            font-size: 13px;
+            background-color: transparent;
+            border: none;
+        }
+
+        .f-btn {
+            width: 100%;
+            height: 44px;
+            background: rgba(92, 135, 255, 1);
+            border-radius: 5px;
+            color: #fff;
+            font-size: 16px;
+            padding: 0;
+            margin-top: 10px;
+        }
+
+        .btn-gray {
+            background: #cccccc;
+        }
+
+        .proxy-desc {
+            color: #6d6d6d;
+            font-size: 14px;
+            line-height: 24px;
+            display: block;
+        }
+
+        .sotr-content {
+            position: relative;
+            padding: 10px 15px;
+            background-color: #fff;
+            top: -9px;
+        }
+
+        .sc-content-title {
+            font-weight: 500;
+            padding: 10px 0;
+            font-size: 16px;
+            color: #333;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <div class="scroll-view-y">
+            <div class="banner-cover">
+                <img class="bc-cover" src="../images/linkImg/67b9a14f680297491cec517ed9aaf2ed.png" />
+            </div>
+            <div class="sort-list"></div>
+            <div class="sotr-content">
+                <div class="sc-content-item">
+                    <span class="sc-content-title">代理政策</span>
+                    <div class="p1" style="margin-top: 0; "><span
+                            class="proxy-desc">丹东凤凰山自古有辽东第一山的美誉。常年吸引全国各地游客前来观赏。山上的泉水清甜甘洌，是大自然对于小镇市民最好的馈赠。而老毕纯粮就坐落在凤凰山脚下，坚持纯粮酿造，借凤凰山名号可以作为特产出售。我们不生产酒，我们只是大自然的搬运工。</span>
+                    </div>
+                    <div class="p1" style="margin-top: 0; "><span
+                            class="proxy-desc">茶叶源于中国，茶叶最早是被作为祭品使用的。但从春秋后期就被人们作为菜食，在西汉中期发展为药用，西汉后期才发展为宫廷高级饮料，普及民间作为普通饮料那是西晋以后的事。</span>
+                    </div>
+                    <div class="p1" style="margin-top: 0; "><span class="proxy-desc"><img style="width: 100%;"
+                                src="../images/linkImg/088027e418a92d499df3067228bcd536.png" /></span>
+                    </div>
+                    <div class="p1" style="margin-top: 0; "><span
+                            class="proxy-desc">中国目前白酒市场上，至少有60%-70%的白酒属于非纯粮酿造的酒精勾兑酒。尽管国家允许白酒生产使用食用酒精，但添加食用酒精勾兑与纯粮酿造酒成本悬殊至少在2倍以上，然而许多白酒企业却“用而不标”。</span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="from">
+                <div class="f-join-title">申请加盟</div>
+                <div class="f-join-msg">提交联系方式，加盟顾问1V1服务</div>
+                <div class="f-input-box">
+                    <input class="f-input" type="text" maxlength="10" value="" placeholder="请输入您的姓名"></input>
+                </div>
+                <div class="f-input-box">
+                    <input class="f-input" type="number" keyboard-type="number" value="" placeholder="请输入您的手机号"
+                        maxlength="11"></input>
+                </div>
+                <button class='f-btn'>提交</button>
+            </div>
+
+        </div>
+
+    </div>
+</body>
+
+<script>
+    let sortList = [
+        {
+            "title": "代理政策",
+            "image": "../images/icon/1.png"
+        },
+        {
+            "title": "代理政策",
+            "image": "../images/icon/1.png"
+        },
+        {
+            "title": "代理政策",
+            "image": "../images/icon/1.png"
+        },
+        {
+            "title": "代理政策",
+            "image": "../images/icon/1.png"
+        }
+    ]
+    getSortList()
+
+    function getSortList() {
+        let str = ''
+        sortList.forEach(item => {
+            str += `
+                <div class="sl-cate-item"  data-id="${item.id}">
+                    <img src="${item.image}" class="sl-cate-img" />
+                    <span class="sl-cate-word">${item.title}</span>
+                </div>`
+        })
+
+        document.querySelector('.sort-list').innerHTML = str;
+    }
+
+</script>
+
+</html>

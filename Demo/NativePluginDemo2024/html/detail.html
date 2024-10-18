@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>detail</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css" />
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+    <style>
+        .page {
+            height: 100%;
+            background-color: #f8f8f8;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .nav-bar {
+            display: flex;
+            width: 100%;
+            height: 45px;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 1px solid #ccc;
+            background-color: #fff;
+        }
+
+        .nav-bar-back {
+            position: absolute;
+            left: 15px;
+            width: 100px;
+            flex-direction: row;
+            justify-content: left;
+            align-items: center;
+        }
+
+        .nav-bar-icon {
+            margin-right: 5px;
+            width: 15px;
+            height: 15px;
+        }
+
+        .nav-bar-text {
+            font-size: 20px;
+            color: #333;
+        }
+
+        .info-title {
+            padding: 10px 15px;
+            background-color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .title-text {
+            color: #262626;
+            font-size: 18px;
+        }
+
+        .date-text {
+            margin-top: 5px;
+            color: #999;
+            font-size: 12px;
+        }
+
+        .detail_title {
+            color: #6d6d6d;
+            font-size: 14px;
+            line-height: 24px;
+            display: block;
+        }
+
+        .p1 {
+            margin: 16px 0;
+        }
+
+        .detail-content {
+            flex: 1;
+            background-color: #fff;
+            padding: 10px 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <div class="nav-bar">
+            <div class="nav-bar-back" onclick="closeWin()">
+                <img class="nav-bar-icon" src="../images/back/back.png" />
+                <span class="nav-bar-text">返回</span>
+            </div>
+            <span class="nav-bar-text">案例详情</span>
+        </div>
+        <div class="scroll-view-y">
+            <div class="info-title">
+                <span class="title-text">创业夫妻加盟66天，门店已经排起了长龙</span>
+                <span class="date-text">2020-08-24 14:37:20</span>
+            </div>
+            <div class="detail-content">
+                <p class="p1">
+                    <span class="detail_title">「茶事分享」一款红茶醉了心</span>
+                </p>
+                <p class="p1">
+                    <span
+                        class="detail_title">茶叶源于中国，茶叶最早是被作为祭品使用的。但从春秋后期就被人们作为菜食，在西汉中期发展为药用，西汉后期才发展为宫廷高级饮料，普及民间作为普通饮料那是西晋以后的事。</span>
+                </p>
+                <p class="p1">
+                    <span class="detail_title"><img style="width: 100%;"
+                            src='../images/linkImg/088027e418a92d499df3067228bcd536.png' /></span>
+                </p>
+                <p class="p1">
+                    <span
+                        class="detail_title">发现最早人工种植茶叶的遗迹在浙江余姚的田螺山遗址，已有6000多年的历史。饮茶始于中国。叶革质，长圆形或椭圆形，可以用开水直接泡饮，依据品种和制作方式以及产品外形分成六大类。依据季节采制可分为春茶、夏茶、秋茶、冬茶。以各种毛茶或精制茶叶再加工形成再加茶，包括分为花茶、紧压茶、萃取茶、药用保健茶、茶食品、含茶饮料等。</span>
+                </p>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+<script src="../script/api.js"></script>
+<script>
+    apiready = function () {
+        $api.fixStatusBar($api.dom('.nav-bar'));
+    }
+    function closeWin() {
+        api.closeWin();
+    }
+
+
+</script>
+
+</html>

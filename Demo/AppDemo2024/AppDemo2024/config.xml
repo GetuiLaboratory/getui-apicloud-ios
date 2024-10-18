@@ -1,0 +1,38 @@
+
+<widget id="A2112657811665059846" version="0.0.1">
+  <name>AppDemo2024</name>
+  <description>Example For YonStudio.</description>
+  <author email="developer@yonyou.com" href="http://developer.yonyou.com">Developer</author>
+  <preference name="avm" value="false"/>
+  <preference name="pageBounce" value="false"/>
+  <preference name="appBackground" value="rgba(0,0,0,0.0)"/>
+  <preference name="windowBackground" value="rgba(0,0,0,0.0)"/>
+  <preference name="frameBackgroundColor" value="rgba(0,0,0,0.0)"/>
+  <preference name="hScrollBarEnabled" value="false"/>
+  <preference name="vScrollBarEnabled" value="false"/>
+  <preference name="autoLaunch" value="true"/>
+  <preference name="fullScreen" value="false"/>
+  <preference name="autoUpdate" value="true"/>
+  <preference name="smartUpdate" value="false"/>
+  <preference name="debug" value="true"/>
+  <preference name="statusBarAppearance" value="true"/>
+  <content src="index.html"/>
+  <access origin="*"/>
+  <permission name="readPhoneState"/>
+  <permission name="camera"/>
+  <permission name="record"/>
+  <permission name="location"/>
+  <permission name="fileSystem"/>
+  <permission name="internet"/>
+  <permission name="bootCompleted"/>
+  <permission name="hardware"/>
+  <feature name="pushGeTui">
+    <param name="ios_appkey" value="BZF4dANEYr8dwLhj6lRfx2" />
+    <param name="ios_appid" value="xXmjbbab3b5F1m7wAYZoG2" />
+    <param name="ios_appsecret" value="yXRS5zRxDt8WhMW8DD8W05" />
+    <param name="android_appkey" value="aiMe49ehZa7IK8sevOTiY8" />
+    <param name="android_appid" value="h5AH1rK4KW7vfFGZjT7fG" />
+    <param name="android_appsecret" value="wx7779c7c063a9d4d9" />
+    <param name="android_groupid" value="" />
+  </feature>
+</widget>

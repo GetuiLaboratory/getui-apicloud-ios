@@ -1,0 +1,178 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+        content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width" />
+    <title>APP</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css" />
+    <link rel="stylesheet" type="text/css" href="../css/common.css" />
+    <style>
+        #feature {
+            display: -webkit-box;
+            -webkit-box-orient: horizontal;
+        }
+
+        .featureList {
+            margin-top: 2px;
+            margin-left: 2px;
+            height: 30px;
+            border: 1px solid #D6D6D6;
+            -webkit-box-flex: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div id="feature">
+            <input class="featureList" type="button" value="setTag" onclick="setTag()" />
+            <input class="featureList" type="button" value="bindAlias" onclick="bindAlias()" />
+            <input class="featureList" type="button" value="unBindAlias" onclick="unBindAlias()" />
+            <input class="featureList" type="button" value="sendMsg" onclick="sendMsg()" />
+            <input class="featureList" type="button" value="fetchClientId" onclick="fetchClientId()" />
+            <input class="featureList" type="button" value="getVersion" onclick="getVersion()" />
+            <input class="featureList" type="button" value="isPushTurnedOn" onclick="isPushTurnedOn()" />
+            <input class="featureList" type="button" value="setBadge" onclick="setBadge()" />
+        </div>
+        <ul id="sys-info"></ul>
+    </div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript">
+
+    function printfLog(log) {
+        var str;
+        str = '<li><div class="txt">' + log + '</div></li>';
+        $api.byId('sys-info').innerHTML += str;
+    }
+
+    var push;
+    apiready = function () {
+        var param = {
+            msg: "hello app"
+        };
+        push = api.require('pushGeTui');
+        push.initialize(callback);
+        // 注册 VoIP，并实现接收 VoIP 消息回调
+        push.voipRegistration(function (ret, err) {
+            alert("voip callback = " + JSON.stringify(ret) + "err = " + JSON.stringify(err));
+        });
+    }
+    function callback(ret, err) {
+        alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err));
+        //if(ret.type=='cid'){
+        //    var log='cid:'+ret.cid;
+        //    printfLog(ret.cid);
+        //}
+        //if(ret.type=='payload'){
+        //    var log='paylog'+ret.payload;
+        //    printfLog(log);
+        //}
+        var log;
+        switch (ret.type) {
+            case 'cid':
+                log = 'cid:' + ret.cid;
+                break;
+            case 'payload':
+                log = 'payload:' + ret.payload;
+                break;
+            case 'apns':
+                log = 'apns click:' + ret.result + ' msg:' + ret.msg;
+                break;
+            case 'willPresentNotification':
+                log = 'willPresentNotification:' + ret.result + ' msg:' + ret.msg;
+                break;
+            case 'openSettings':
+                log = 'openSettingsForNotification:';
+                break;
+            case 'occurError':
+                log = 'occurError';
+                break;
+            case 'sendMsgFeedback':
+                log = 'sendMsgFeedback:' + ret.result + ' messageid:' + ret.messageId;
+                break;
+            case 'AppLinkPayload':
+                log = 'applink:' + ret.result + ' msg:' + ret.payload;
+                break;
+        }
+        if (log) {
+            printfLog(log);
+        }
+    }
+
+    function sendMsg() {
+        var param = {
+            extraData: 'sendMsgTest',
+        };
+        push.sendMessage(param, function (ret, err) {
+            alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err));
+        });
+    }
+
+    function setTag() {
+        var param = {
+            tags: "tag1,tag2,tag3",
+        };
+        push.setTag(param, function (ret, err) {
+            alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err));
+            var log = 'setTag:' + ret.result;
+            printfLog(log);
+        });
+    };
+    function setBadge() {
+        var param = {
+            badge: 3,
+        };
+        push.setBadge(param, function (ret, err) {
+            alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err));
+            var log = 'setBadge:' + ret.result;
+            printfLog(log);
+        });
+    };
+    function bindAlias() {
+        var param = {
+            alias: 'newAlias',
+        };
+        push.bindAlias(param, function (ret, err) {
+            alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err));
+            var log = 'bindAlias:' + ret.result;
+            printfLog(log);
+        });
+    }
+    function unBindAlias() {
+        var param = {
+            alias: 'newAlias',
+        };
+        push.unBindAlias(param, function (ret, err) {
+            alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err));
+            var log = 'unBindAlias:' + ret.result;
+            printfLog(log);
+        });
+    }
+    function fetchClientId() {
+        push.fetchClientId(function (ret, err) {
+            alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err));
+            var log = 'clientid:' + ret.cid;
+            printfLog(log);
+        });
+    }
+
+    function getVersion() {
+        push.getVersion(function (ret, err) {
+            alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err));
+            var log = 'version' + ret.version;
+            printfLog(log);
+        });
+    }
+    function isPushTurnedOn() {
+        push.isPushTurnedOn(function (ret, err) {
+            alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err));
+            var log = 'isPushTurnedOn' + ret.isPushTurnedOn;
+            printfLog(log);
+        });
+    }
+</script>
+
+</html>

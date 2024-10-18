@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>企业展示</title>
+    <link rel="stylesheet" type="text/css" href="./css/api.css" />
+    <link rel="stylesheet" type="text/css" href="./css/style.css" />
+    <style>
+    </style>
+</head>
+
+<body>
+    <div>
+    </div>
+</body>
+
+</html>
+<script type="text/javascript" src="script/api.js"></script>
+<script type="text/javascript">
+    apiready = function () {
+        initPage()
+    }
+
+    function initPage() {
+        api.openTabLayout({
+            name: 'homepage',
+            url: 'index.html',
+            slidBackEnabled: false,
+            hideTabBar: false,
+            tabBar: {
+                scrollEnabled: false,
+                background: "#fff",
+                shadow: "#f1f1f1",
+                color: "#5e5e5e",
+                preload: 0,
+                selectedColor: "#333333",
+                list: [{
+                    "iconPath": "images/toolbar/home@no_selected.png",
+                    "selectedIconPath": "images/toolbar/home@selected.png",
+                    "text": "首页"
+                }, {
+                    "iconPath": "images/toolbar/case@no_selected.png",
+                    "selectedIconPath": "images/toolbar/case@selected.png",
+                    "text": "案例"
+                }, {
+                    "iconPath": "images/toolbar/join@no_selected.png",
+                    "selectedIconPath": "images/toolbar/join@selected.png",
+                    "text": "加盟代理"
+                }],
+                frames: [{
+                    "name": "main",
+                    "url": "html/main.html",
+                    "title": "首页"
+                }, {
+                    "name": "page2",
+                    "url": "html/case.html",
+                    "title": "案例"
+                }, {
+                    "name": "join",
+                    "url": "html/join.html",
+                    "title": "加盟代理"
+                }],
+                preload: 3
+            }
+        });
+    }
+</script>
