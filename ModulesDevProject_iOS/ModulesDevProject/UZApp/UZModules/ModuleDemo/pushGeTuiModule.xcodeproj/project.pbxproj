@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		41F1F54E2CC247E300ABCFB7 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F1F54D2CC247E300ABCFB7 /* File.swift */; };
+		41F1F5612CC2533700ABCFB7 /* GTSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41F1F5602CC2533700ABCFB7 /* GTSDK.framework */; };
+		41F1F5622CC2533700ABCFB7 /* GTCommonSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41F1F55F2CC2533700ABCFB7 /* GTCommonSDK.framework */; };
 		A8BA92DE28BDE63F00C56C94 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8BA92DD28BDE63F00C56C94 /* Foundation.framework */; };
 		A8BA92E628BDE7FD00C56C94 /* UZModuleGetuiSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = A8BA92E428BDE7FD00C56C94 /* UZModuleGetuiSDK.m */; };
-		A8BA92E728BDE7FD00C56C94 /* GTSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8BA92E528BDE7FD00C56C94 /* GTSDK.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +27,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		41F1F54C2CC247E300ABCFB7 /* pushGeTuiModule-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "pushGeTuiModule-Bridging-Header.h"; sourceTree = "<group>"; };
+		41F1F54D2CC247E300ABCFB7 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		41F1F55F2CC2533700ABCFB7 /* GTCommonSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GTCommonSDK.framework; sourceTree = "<group>"; };
+		41F1F5602CC2533700ABCFB7 /* GTSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GTSDK.framework; sourceTree = "<group>"; };
 		524B96AE1E165D4C00F0D05E /* UZURLTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UZURLTask.h; sourceTree = "<group>"; };
 		526024371CFDA1D7006F845D /* UIViewControllerExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewControllerExtension.h; sourceTree = "<group>"; };
 		528608281A596B0600587EC2 /* libpushGeTuiModule.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libpushGeTuiModule.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -36,7 +42,6 @@
 		A8BA92E228BDE7FD00C56C94 /* UZModuleGetuiSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UZModuleGetuiSDK.h; sourceTree = "<group>"; };
 		A8BA92E328BDE7FD00C56C94 /* GeTuiSdk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeTuiSdk.h; sourceTree = "<group>"; };
 		A8BA92E428BDE7FD00C56C94 /* UZModuleGetuiSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UZModuleGetuiSDK.m; sourceTree = "<group>"; };
-		A8BA92E528BDE7FD00C56C94 /* GTSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = GTSDK.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,7 +50,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A8BA92DE28BDE63F00C56C94 /* Foundation.framework in Frameworks */,
-				A8BA92E728BDE7FD00C56C94 /* GTSDK.a in Frameworks */,
+				41F1F5612CC2533700ABCFB7 /* GTSDK.framework in Frameworks */,
+				41F1F5622CC2533700ABCFB7 /* GTCommonSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,9 +109,12 @@
 			isa = PBXGroup;
 			children = (
 				A8BA92E328BDE7FD00C56C94 /* GeTuiSdk.h */,
-				A8BA92E528BDE7FD00C56C94 /* GTSDK.a */,
+				41F1F55F2CC2533700ABCFB7 /* GTCommonSDK.framework */,
+				41F1F5602CC2533700ABCFB7 /* GTSDK.framework */,
 				A8BA92E228BDE7FD00C56C94 /* UZModuleGetuiSDK.h */,
 				A8BA92E428BDE7FD00C56C94 /* UZModuleGetuiSDK.m */,
+				41F1F54D2CC247E300ABCFB7 /* File.swift */,
+				41F1F54C2CC247E300ABCFB7 /* pushGeTuiModule-Bridging-Header.h */,
 			);
 			path = GeTuiSdk;
 			sourceTree = "<group>";
@@ -141,6 +150,7 @@
 				TargetAttributes = {
 					528608271A596B0600587EC2 = {
 						CreatedOnToolsVersion = 6.1;
+						LastSwiftMigration = 1600;
 					};
 				};
 			};
@@ -168,6 +178,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A8BA92E628BDE7FD00C56C94 /* UZModuleGetuiSDK.m in Sources */,
+				41F1F54E2CC247E300ABCFB7 /* File.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,6 +272,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/pushGeTuiModule/GeTuiSdk",
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/pushGeTuiModule",
@@ -270,6 +286,9 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "pushGeTuiModule/GeTuiSdk/pushGeTuiModule-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
 			};
 			name = Debug;
 		};
@@ -277,6 +296,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/pushGeTuiModule/GeTuiSdk",
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/pushGeTuiModule",
@@ -286,6 +310,8 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "pushGeTuiModule/GeTuiSdk/pushGeTuiModule-Bridging-Header.h";
+				SWIFT_VERSION = 6.0;
 			};
 			name = Release;
 		};

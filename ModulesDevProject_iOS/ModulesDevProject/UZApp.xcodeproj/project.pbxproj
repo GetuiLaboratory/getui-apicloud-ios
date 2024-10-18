@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		41F1F5452CC245BA00ABCFB7 /* libpushGeTuiModule.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 41F1F5442CC245B200ABCFB7 /* libpushGeTuiModule.a */; };
+		41F1F5512CC2480400ABCFB7 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F1F5502CC2480400ABCFB7 /* File.swift */; };
+		41F1F55D2CC24ECD00ABCFB7 /* GTCommonSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41F1F55B2CC24ECD00ABCFB7 /* GTCommonSDK.framework */; };
+		41F1F55E2CC24ECD00ABCFB7 /* GTSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41F1F55C2CC24ECD00ABCFB7 /* GTSDK.framework */; };
 		5204B6192154A55600306B1E /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5204B6182154A55600306B1E /* Launch Screen.storyboard */; };
 		5204B64C2154AFCE00306B1E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5204B6372154AFCD00306B1E /* InfoPlist.strings */; };
 		522E96FD19EF920C00A2E9C5 /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 522E96FB19EF920C00A2E9C5 /* libbz2.tbd */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -67,7 +71,6 @@
 		52BA30F619F6368400D81640 /* MediaToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52BA30DE19F6368400D81640 /* MediaToolbox.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		52BA30F719F6368400D81640 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52BA30DF19F6368400D81640 /* Metal.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		52BA30F819F6368400D81640 /* MultipeerConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52BA30E019F6368400D81640 /* MultipeerConnectivity.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		52BA30FA19F6368400D81640 /* NewsstandKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52BA30E219F6368400D81640 /* NewsstandKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		52BA30FB19F6368400D81640 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52BA30E319F6368400D81640 /* NotificationCenter.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		52BA30FC19F6368400D81640 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52BA30E419F6368400D81640 /* OpenAL.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		52BA30FD19F6368400D81640 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52BA30E519F6368400D81640 /* OpenGLES.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -88,9 +91,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		A8BA92C528BDBC6500C56C94 /* PBXContainerItemProxy */ = {
+		41F1F5432CC245B200ABCFB7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 52F19EC51E28CF5F00AD8D19 /* pushGeTuiModule.xcodeproj */;
+			containerPortal = 41F1F53F2CC245B200ABCFB7 /* pushGeTuiModule.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 528608281A596B0600587EC2;
 			remoteInfo = pushGeTuiModule;
@@ -111,6 +114,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		41F1F53F2CC245B200ABCFB7 /* pushGeTuiModule.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = pushGeTuiModule.xcodeproj; path = ModuleDemo/pushGeTuiModule.xcodeproj; sourceTree = "<group>"; };
+		41F1F5502CC2480400ABCFB7 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		41F1F55B2CC24ECD00ABCFB7 /* GTCommonSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GTCommonSDK.framework; sourceTree = "<group>"; };
+		41F1F55C2CC24ECD00ABCFB7 /* GTSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GTSDK.framework; sourceTree = "<group>"; };
 		5204B6182154A55600306B1E /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		5204B6382154AFCD00306B1E /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5204B6392154AFCD00306B1E /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -208,7 +215,6 @@
 		52BA30DE19F6368400D81640 /* MediaToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaToolbox.framework; path = System/Library/Frameworks/MediaToolbox.framework; sourceTree = SDKROOT; };
 		52BA30DF19F6368400D81640 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
 		52BA30E019F6368400D81640 /* MultipeerConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MultipeerConnectivity.framework; path = System/Library/Frameworks/MultipeerConnectivity.framework; sourceTree = SDKROOT; };
-		52BA30E219F6368400D81640 /* NewsstandKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NewsstandKit.framework; path = System/Library/Frameworks/NewsstandKit.framework; sourceTree = SDKROOT; };
 		52BA30E319F6368400D81640 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		52BA30E419F6368400D81640 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		52BA30E519F6368400D81640 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -228,7 +234,6 @@
 		52BA310D19F63AB200D81640 /* libarchive.tbd */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.tbd"; name = libarchive.tbd; path = usr/lib/libarchive.tbd; sourceTree = SDKROOT; };
 		52BA311019F63B0300D81640 /* libbsm.tbd */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.tbd"; name = libbsm.tbd; path = usr/lib/libbsm.tbd; sourceTree = SDKROOT; };
 		52CA35741AB195C9002579CF /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.tbd"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
-		52F19EC51E28CF5F00AD8D19 /* pushGeTuiModule.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = pushGeTuiModule.xcodeproj; path = ModuleDemo/pushGeTuiModule.xcodeproj; sourceTree = "<group>"; };
 		A8BA92C028BDBA3900C56C94 /* libpushGeTuiModule.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libpushGeTuiModule.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8BA92D728BDDE6800C56C94 /* UZApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UZApp.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -238,6 +243,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41F1F5452CC245BA00ABCFB7 /* libpushGeTuiModule.a in Frameworks */,
 				A8BA92C128BDBA3900C56C94 /* libpushGeTuiModule.a in Frameworks */,
 				5262179B1CFC3B9C00DEE766 /* WebKit.framework in Frameworks */,
 				52E586AA1AFC74F100864ACF /* CoreAudio.framework in Frameworks */,
@@ -246,7 +252,8 @@
 				52BA30F619F6368400D81640 /* MediaToolbox.framework in Frameworks */,
 				52BA30F719F6368400D81640 /* Metal.framework in Frameworks */,
 				52BA30F819F6368400D81640 /* MultipeerConnectivity.framework in Frameworks */,
-				52BA30FA19F6368400D81640 /* NewsstandKit.framework in Frameworks */,
+				41F1F55D2CC24ECD00ABCFB7 /* GTCommonSDK.framework in Frameworks */,
+				41F1F55E2CC24ECD00ABCFB7 /* GTSDK.framework in Frameworks */,
 				52BA30FB19F6368400D81640 /* NotificationCenter.framework in Frameworks */,
 				52BA30FC19F6368400D81640 /* OpenAL.framework in Frameworks */,
 				52BA30FD19F6368400D81640 /* OpenGLES.framework in Frameworks */,
@@ -316,6 +323,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		41F1F5402CC245B200ABCFB7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				41F1F5442CC245B200ABCFB7 /* libpushGeTuiModule.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		5204B6362154AFCD00306B1E /* localization */ = {
 			isa = PBXGroup;
 			children = (
@@ -344,6 +359,8 @@
 		527BCF6D19C431480077631F /* UZApp */ = {
 			isa = PBXGroup;
 			children = (
+				41F1F55B2CC24ECD00ABCFB7 /* GTCommonSDK.framework */,
+				41F1F55C2CC24ECD00ABCFB7 /* GTSDK.framework */,
 				A8BA92D728BDDE6800C56C94 /* UZApp.entitlements */,
 				52A655FA274F2C4600EDE06B /* UZEngine */,
 				527BCF9B19C4339B0077631F /* UZModules */,
@@ -362,6 +379,7 @@
 				527BCFF419C4346B0077631F /* widget */,
 				527BCF6F19C431480077631F /* Info.plist */,
 				527BCF7019C431480077631F /* main.m */,
+				41F1F5502CC2480400ABCFB7 /* File.swift */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -369,7 +387,7 @@
 		527BCF9B19C4339B0077631F /* UZModules */ = {
 			isa = PBXGroup;
 			children = (
-				52F19EC51E28CF5F00AD8D19 /* pushGeTuiModule.xcodeproj */,
+				41F1F53F2CC245B200ABCFB7 /* pushGeTuiModule.xcodeproj */,
 			);
 			path = UZModules;
 			sourceTree = "<group>";
@@ -396,7 +414,6 @@
 				52BA30DE19F6368400D81640 /* MediaToolbox.framework */,
 				52BA30DF19F6368400D81640 /* Metal.framework */,
 				52BA30E019F6368400D81640 /* MultipeerConnectivity.framework */,
-				52BA30E219F6368400D81640 /* NewsstandKit.framework */,
 				52BA30E319F6368400D81640 /* NotificationCenter.framework */,
 				52BA30E419F6368400D81640 /* OpenAL.framework */,
 				52BA30E519F6368400D81640 /* OpenGLES.framework */,
@@ -487,14 +504,6 @@
 			path = Dependencies;
 			sourceTree = "<group>";
 		};
-		A8BA92C228BDBC6500C56C94 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				A8BA92C628BDBC6500C56C94 /* libpushGeTuiModule.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -576,8 +585,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = A8BA92C228BDBC6500C56C94 /* Products */;
-					ProjectRef = 52F19EC51E28CF5F00AD8D19 /* pushGeTuiModule.xcodeproj */;
+					ProductGroup = 41F1F5402CC245B200ABCFB7 /* Products */;
+					ProjectRef = 41F1F53F2CC245B200ABCFB7 /* pushGeTuiModule.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -588,11 +597,11 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		A8BA92C628BDBC6500C56C94 /* libpushGeTuiModule.a */ = {
+		41F1F5442CC245B200ABCFB7 /* libpushGeTuiModule.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libpushGeTuiModule.a;
-			remoteRef = A8BA92C528BDBC6500C56C94 /* PBXContainerItemProxy */;
+			remoteRef = 41F1F5432CC245B200ABCFB7 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -618,6 +627,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				527BCF7119C431480077631F /* main.m in Sources */,
+				41F1F5512CC2480400ABCFB7 /* File.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -761,9 +771,12 @@
 				DEVELOPMENT_TEAM = 3MJY223U56;
 				ENABLE_BITCODE = NO;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
-				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/UZApp/UZModules";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/UZApp/UZModules",
+					"$(PROJECT_DIR)/UZApp",
+				);
 				INFOPLIST_FILE = UZApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -797,9 +810,12 @@
 				DEVELOPMENT_TEAM = 3MJY223U56;
 				ENABLE_BITCODE = NO;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
-				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/UZApp/UZModules";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/UZApp/UZModules",
+					"$(PROJECT_DIR)/UZApp",
+				);
 				INFOPLIST_FILE = UZApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

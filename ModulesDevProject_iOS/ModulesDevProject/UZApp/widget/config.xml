@@ -12,6 +12,6 @@
         <param name="ios_appid" value="xXmjbbab3b5F1m7wAYZoG2"/>
         <param name="ios_appkey" value="BZF4dANEYr8dwLhj6lRfx2"/>
         <param name="ios_appsecret" value="yXRS5zRxDt8WhMW8DD8W05"/>
-        <param name="active_show_notification" value="0"/>
+        <param name="active_show_notification" value="1"/>
     </feature>
 </widget>
