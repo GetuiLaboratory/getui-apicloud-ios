@@ -1,279 +1,178 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport"
-        content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
-    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
-    <title>main</title>
+        content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width" />
+    <title>APP</title>
     <link rel="stylesheet" type="text/css" href="../css/api.css" />
-    <link rel="stylesheet" type="text/css" href="../css/style.css" />
-    <link rel="stylesheet" href="text/css" href="../css/swiper-bundle.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/common.css" />
     <style>
-        .page {
-            height: 100%;
-            width: 100%;
-            background-color: #fff;
-            display: flex;
-            flex-direction: column;
-            flex: 1;
-        }
-
-        .nav-bar {
-            width: 100%;
-            height: 45px;
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-            border-bottom: 1px solid #ccc;
-            background-color: #fff;
-            text-align: center;
-        }
-
-        .nav-bar-text {
-            font-size: 20px;
-            color: #333;
-            text-align: center;
-        }
-
-        .swiper {
-            width: 100%;
-            position: relative;
-            height: 160px;
-            overflow: hidden;
-        }
-
-        .swiper-wrapper {
-            overflow: hidden;
-            position: relative;
-            margin: 12px 0;
-            display: flex;
-            height: 148px;
-            flex-direction: row;
-            flex-wrap: nowrap;
-            width: 300%;
-        }
-
-        .swiper-wrapper .swiper-slide {
-            text-align: center;
-            font-size: 18px;
-            background: #fff;
+        #feature {
             display: -webkit-box;
-            display: -ms-flexbox;
-            display: -webkit-flex;
-            display: flex;
-            -webkit-box-pack: center;
-            -ms-flex-pack: center;
-            -webkit-justify-content: center;
-            justify-content: center;
-            -webkit-box-align: center;
-            -ms-flex-align: center;
-            -webkit-align-items: center;
-            align-items: center;
+            -webkit-box-orient: horizontal;
         }
 
-        .swiper-wrapper .swiper-slide img {
-            display: block;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .swiper-pagination {
-            display: flex;
-            justify-content: center;
-            position: absolute;
-            width: 100%;
-            bottom: 15px;
-        }
-
-        .swiper-pagination-bullet {
-            width: 10px;
-            height: 10px;
-            text-align: center;
-            line-height: 10px;
-            opacity: 1;
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 50%;
-            border: 1px solid #e7e6e6;
-            margin: 0 3px;
-        }
-
-        .swiper-pagination-bullet-active {
-            color: #fff;
-            background: #666;
-        }
-
-        .cate {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            padding: 0 7px 10px 15px;
-            justify-content: space-between;
-        }
-
-        .cate-item {
-            margin-bottom: 4px;
-            box-sizing: border-box;
-            width: 48%;
-            box-shadow: 0 3px 5px 2px #f1f1f1;
-        }
-
-        .cate-img {
-            width: 100%;
-            height: 100%;
-            border-radius: 8px;
-            border: 1px solid #f1f1f1;
-        }
-
-        .detail-img {
-            width: 100%;
-        }
-
-        .about-title {
-            color: #222222;
-            font-size: 18px;
-            display: block;
-            margin: 6px 0;
-        }
-
-        .about-desc {
-            color: #888888;
-            font-size: 14px;
+        .featureList {
+            margin-top: 2px;
+            margin-left: 2px;
+            height: 30px;
+            border: 1px solid #D6D6D6;
+            -webkit-box-flex: 1;
         }
     </style>
 </head>
 
 <body>
-    <div class="page">
-        <!-- 顶部导航 -->
-        <div class="nav-bar">
-            <span class="nav-bar-text">首页</span>
+    <div>
+        <div id="feature">
+            <input class="featureList" type="button" value="setTag" onclick="setTag()" />
+            <input class="featureList" type="button" value="bindAlias" onclick="bindAlias()" />
+            <input class="featureList" type="button" value="unBindAlias" onclick="unBindAlias()" />
+            <input class="featureList" type="button" value="sendMsg" onclick="sendMsg()" />
+            <input class="featureList" type="button" value="fetchClientId" onclick="fetchClientId()" />
+            <input class="featureList" type="button" value="getVersion" onclick="getVersion()" />
+            <input class="featureList" type="button" value="isPushTurnedOn" onclick="isPushTurnedOn()" />
+            <input class="featureList" type="button" value="setBadge" onclick="setBadge()" />
         </div>
-        <div class="scroll-view-y">
-            <!-- 首页轮播图 -->
-            <div class='swiper navSwiper'>
-                <div class='swiper-wrapper'>
-                    <div class="swiper-slide">
-                        <img src="../images/linkImg/c44fc5c4b158c96b414f55ac12562be2.png" alt="" />
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="../images/linkImg/aae0244b645bcf2b0ea70dfde8da8e47.png" alt="" />
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="../images/linkImg/d6f008eb12663454510e42dbe3038e7b.png" alt="" />
-                    </div>
-
-                </div>
-                <div class="swiper-pagination"></div>
-            </div>
-            <!-- 企业优势 -->
-            <div class="advantage-list">
-                <div class="cate">
-                    <div class="cate-item">
-                        <img class="cate-img" src="../images/linkImg/d42370efd94ba8249e8e24c96e154313.png" />
-                    </div>
-                    <div class="cate-item">
-                        <img class="cate-img" src="../images/linkImg/b6c101bcfbe547e0dc85545342764074.png" />
-                    </div>
-                    <div class="cate-item">
-                        <img class="cate-img" src="../images/linkImg/644f407f24cd192913be807488572c2d.png" />
-                    </div>
-                    <div class="cate-item">
-                        <img class="cate-img" src="../images/linkImg/39d0bf6bea912a5380d5b9a7c2c77d95.png" />
-                    </div>
-                </div>
-            </div>
-            <!-- 详情 -->
-            <img src="../images/linkImg/049597870908fc92d2fe5f19541cfa1c.png" alt="detail" class="detail-img" />
-            <!-- 关于我们 -->
-            <div><span class="about-title">柚子深山茶叶有限公司</span></div>
-            <div><span class="about-desc">北京市朝阳区中关村科技园区电子城科技园A1座2层</span></div>
-            <div><span class="about-desc">www.apicloud.com</span></div>
-            <div class="about-desc">18642511611</div>
-        </div>
+        <ul id="sys-info"></ul>
     </div>
 </body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript">
 
-<script src="../script/api.js"></script>
-<script type="text/javascript" src="../script/swiper-bundle.min.js"></script>
-<script>
+    function printfLog(log) {
+        var str;
+        str = '<li><div class="txt">' + log + '</div></li>';
+        $api.byId('sys-info').innerHTML += str;
+    }
+
+    var push;
     apiready = function () {
-        $api.fixStatusBar($api.dom('.nav-bar'));
-        api.setStatusBarStyle && api.setStatusBarStyle({
-            style: 'dark',
-            color: '-'
+        var param = {
+            msg: "hello app"
+        };
+        push = api.require('pushGeTui');
+        push.initialize(callback);
+        // 注册 VoIP，并实现接收 VoIP 消息回调
+        push.voipRegistration(function (ret, err) {
+            alert("voip callback = " + JSON.stringify(ret) + "err = " + JSON.stringify(err));
         });
-
-
-        var uzgetuisdk = api.require('pushGeTui');
-        // api.alert({
-        //     title: 'testtitle',
-        //     msg: 'testmsg' + uzgetuisdk,
-        // }, function (ret, err) {
-        // });
-        uzgetuisdk.getVersion(function (ret) {
-            api.alert({ msg: "getVersion result:" + ret.version });
-        });
-        uzgetuisdk.initialize(function (ret) {
-            var value = "";
-            switch (ret.type) {
-                case 'cid':
-                    value = 'cid:' + ret.cid;
-                    break;
-                case 'payload':
-                    value = 'payload:' + ret.payload;
-                    break;
-                case 'occurError':
-                    value = 'occurError';
-                    break;
-                case 'onNotificationMessageClicked':
-                    value = 'onNotificationMessageClicked' + ret.onNotificationMessageClicked
-                    break;
-                case 'onNotificationMessageArrived':
-                    value = 'onNotificationMessageArrived' + ret.onNotificationMessageArrived
-                    break;
-            }
-            console.log(value);
-        });
-
+    }
+    function callback(ret, err) {
+        alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err));
+        //if(ret.type=='cid'){
+        //    var log='cid:'+ret.cid;
+        //    printfLog(ret.cid);
+        //}
+        //if(ret.type=='payload'){
+        //    var log='paylog'+ret.payload;
+        //    printfLog(log);
+        //}
+        var log;
+        switch (ret.type) {
+            case 'cid':
+                log = 'cid:' + ret.cid;
+                break;
+            case 'payload':
+                log = 'payload:' + ret.payload;
+                break;
+            case 'apns':
+                log = 'apns click:' + ret.result + ' msg:' + ret.msg;
+                break;
+            case 'willPresentNotification':
+                log = 'willPresentNotification:' + ret.result + ' msg:' + ret.msg;
+                break;
+            case 'openSettings':
+                log = 'openSettingsForNotification:';
+                break;
+            case 'occurError':
+                log = 'occurError';
+                break;
+            case 'sendMsgFeedback':
+                log = 'sendMsgFeedback:' + ret.result + ' messageid:' + ret.messageId;
+                break;
+            case 'AppLinkPayload':
+                log = 'applink:' + ret.result + ' msg:' + ret.payload;
+                break;
+        }
+        if (log) {
+            printfLog(log);
+        }
     }
 
-    var mySwipe = new Swiper(".navSwiper", {
-        autoplay: true,
-        pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-        },
-    });
-    function closeWin() {
-        api.closeWin()
+    function sendMsg() {
+        var param = {
+            extraData: 'sendMsgTest',
+        };
+        push.sendMessage(param, function (ret, err) {
+            alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err));
+        });
     }
 
+    function setTag() {
+        var param = {
+            tags: "tag1,tag2,tag3",
+        };
+        push.setTag(param, function (ret, err) {
+            alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err));
+            var log = 'setTag:' + ret.result;
+            printfLog(log);
+        });
+    };
+    function setBadge() {
+        var param = {
+            badge: 3,
+        };
+        push.setBadge(param, function (ret, err) {
+            alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err));
+            var log = 'setBadge:' + ret.result;
+            printfLog(log);
+        });
+    };
+    function bindAlias() {
+        var param = {
+            alias: 'newAlias',
+        };
+        push.bindAlias(param, function (ret, err) {
+            alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err));
+            var log = 'bindAlias:' + ret.result;
+            printfLog(log);
+        });
+    }
+    function unBindAlias() {
+        var param = {
+            alias: 'newAlias',
+        };
+        push.unBindAlias(param, function (ret, err) {
+            alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err));
+            var log = 'unBindAlias:' + ret.result;
+            printfLog(log);
+        });
+    }
+    function fetchClientId() {
+        push.fetchClientId(function (ret, err) {
+            alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err));
+            var log = 'clientid:' + ret.cid;
+            printfLog(log);
+        });
+    }
 
-        // uzgetuisdk.initialize(function (ret) {
-        //     var value = "";
-        //     switch (ret.type) {
-        //         case 'cid':
-        //             value = 'cid:' + ret.cid;
-        //             break;
-        //         case 'payload':
-        //             value = 'payload:' + ret.payload;
-        //             break;
-        //         case 'occurError':
-        //             value = 'occurError';
-        //             break;
-        //         case 'onNotificationMessageClicked':
-        //             value = 'onNotificationMessageClicked' + ret.onNotificationMessageClicked
-        //             break;
-        //         case 'onNotificationMessageArrived':
-        //             value = 'onNotificationMessageArrived' + ret.onNotificationMessageArrived
-        //             break;
-        //     }
-        // });
-
+    function getVersion() {
+        push.getVersion(function (ret, err) {
+            alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err));
+            var log = 'version' + ret.version;
+            printfLog(log);
+        });
+    }
+    function isPushTurnedOn() {
+        push.isPushTurnedOn(function (ret, err) {
+            alert("ret = " + JSON.stringify(ret) + "err = " + JSON.stringify(err));
+            var log = 'isPushTurnedOn' + ret.isPushTurnedOn;
+            printfLog(log);
+        });
+    }
 </script>
 
 </html>
