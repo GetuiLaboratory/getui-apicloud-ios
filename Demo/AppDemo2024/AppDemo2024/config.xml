@@ -34,5 +34,6 @@
     <param name="android_appid" value="h5AH1rK4KW7vfFGZjT7fG" />
     <param name="android_appsecret" value="wx7779c7c063a9d4d9" />
     <param name="android_groupid" value="" />
+    <param name="active_show_notification" value="1"/>
   </feature>
 </widget>
